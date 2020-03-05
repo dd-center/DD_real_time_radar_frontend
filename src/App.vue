@@ -16,7 +16,7 @@
             <div class="navbar-menu">
                 <div class="navbar-start">
                     <a class="navbar-item">
-                        Home
+                        Home2
                     </a>
                     <a class="navbar-item">
                         Users

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    const DanmakuRating = () => import("../components/DanmakuRating")
+    const DanmakuRating = () => import("../components/HelloWorld")
 
     export default {
         name: 'DataView',

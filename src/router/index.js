@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+// run npm add core-js
 Vue.use(VueRouter)
 
 const routes = [
