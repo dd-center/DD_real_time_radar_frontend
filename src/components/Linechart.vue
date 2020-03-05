@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Linechart',
   data () {
     return {
       orgOptions: {},
@@ -37,7 +37,7 @@ export default {
         //系列值
       let  sData = this.orgOptions.series[0].data;
       console.log(sData)
-      for (let i = 0; i < 1000; i++) {
+      for (let i = 0; i < xData.length; i++) {
         //此处使用let是关键，也可以使用闭包。原理不再赘述
         setTimeout(() => {
           // this.option.xAxis.data.push(xData[i]);

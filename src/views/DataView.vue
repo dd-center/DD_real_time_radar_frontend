@@ -9,7 +9,7 @@
 
 <script>
     const DanmakuRating = () => import("../components/DanmakuRating")
-    const LineChart = () => import("../components/HelloWorld")
+    const LineChart = () => import("../components/Linechart")
     export default {
         name: 'DataView',
         components: {
