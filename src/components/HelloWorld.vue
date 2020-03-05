@@ -27,6 +27,26 @@ export default {
             smooth: true
         }]
     }
+    this.refreshData();
+  },
+  methods: {
+    //添加refreshData方法进行自动设置数据
+    refreshData() {
+      //横轴数据
+      let xData = this.orgOptions.xAxis.data;
+        //系列值
+      let  sData = this.orgOptions.series[0].data;
+      console.log(sData)
+      for (let i = 0; i < 1000; i++) {
+        //此处使用let是关键，也可以使用闭包。原理不再赘述
+        setTimeout(() => {
+          // this.option.xAxis.data.push(xData[i]);
+          // this.option.series[0].data.push(sData[i]);
+          this.orgOptions.xAxis.data.push(xData[i]);
+          this.orgOptions.series[0].data.push(sData[i])
+        }, 1000 * i); //此处要理解为什么是1000*i
+      }
+    }
   }
 }
 </script>
