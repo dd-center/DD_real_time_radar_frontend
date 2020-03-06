@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import 'echarts/lib/component/tooltip';
 export default {
   name: 'Linechart',
   data () {
@@ -20,6 +21,10 @@ export default {
         },
         yAxis: {
             type: 'value'
+        },
+        tooltip: {
+          trigger: 'axis',
+          formatter: '{b} : {c}'
         },
         series: [{
             data: [820, 932, 901, 934, 1290, 1330, 1320],
@@ -37,13 +42,12 @@ export default {
         //系列值
       let  sData = this.orgOptions.series[0].data;
       console.log(sData)
-      for (let i = 0; i < xData.length; i++) {
+      for (let i = 0; i < 50; i++) {
         //此处使用let是关键，也可以使用闭包。原理不再赘述
         setTimeout(() => {
-          // this.option.xAxis.data.push(xData[i]);
-          // this.option.series[0].data.push(sData[i]);
-          this.orgOptions.xAxis.data.push(xData[i]);
-          this.orgOptions.series[0].data.push(sData[i])
+          let index_val = i%5
+          this.orgOptions.xAxis.data.push(xData[index_val]);
+          this.orgOptions.series[0].data.push(sData[index_val])
         }, 1000 * i); //此处要理解为什么是1000*i
       }
     }

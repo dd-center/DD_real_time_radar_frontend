@@ -1,6 +1,6 @@
 <template>
   <div class="echarts">
-      <chart ref="pie" :options="pie" :auto-resize="true"></chart>
+      <chart ref="pie" :options="orgOptions" :auto-resize="true"></chart>
   </div>
 </template>
 <script>
@@ -9,8 +9,13 @@ import 'echarts/lib/component/legend'; //引入图例组件
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/chart/pie';
   export default {
-    data: () => ({
-      pie: {
+    data () {
+    return {
+      orgOptions: {},
+    }
+    },
+    mounted() {
+      this.orgOptions = {
          title: {
     text: '饼图程序调用高亮示例',
     x: 'center'
@@ -47,8 +52,24 @@ import 'echarts/lib/chart/pie';
     }
   ]
       }
-    }),
+      this.refreshData();
+    },
     methods: {
+    //添加refreshData方法进行自动设置数据
+    refreshData() {
+        //系列值
+      let sData = this.orgOptions.series[0].data;
+      console.log(sData)
+        console.log(sData)
+        console.log(sData)
+
+      for (let i = 0; i < 50; i++) {
+        //此处使用let是关键，也可以使用闭包。原理不再赘述
+        setTimeout(() => {
+          this.orgOptions.series[0].data[i%5].value = sData[i%5].value + 200
+        }, 1000 * i); //此处要理解为什么是1000*i
+      }
+    }
     }
   };
 </script>
