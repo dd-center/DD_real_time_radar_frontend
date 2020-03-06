@@ -8,7 +8,8 @@
             <transition-group tag="tbody" name="component-fade">
                 <tr v-for="(i, index) in tableData" :key="i.name" v-show="show" class="td">
                     <td>No.{{index + 1}}</td>
-                    <td><a>{{i.name}}</a></td>
+<!--                    <td><a>{{i.name}}</a></td>-->
+                    <td><router-link to="/user/foo">{{i.name}}</router-link></td>
                     <td>{{i.value}}</td>
                 </tr>
             </transition-group>
@@ -32,7 +33,8 @@
                     },
                     {
                         "name": "2龙",
-                        "value": 2024
+                        "value": 2024,
+                        "uid": 23333
                     }
                 ]
             }
@@ -46,8 +48,8 @@
             updateData: async function () {
                 this.calAnimation();
                 this.tableData = this.calRating();
-                await new Promise(resolve => setTimeout(resolve, 100))
-                ;this.calAnimation();
+                await new Promise(resolve => setTimeout(resolve, 100));
+                this.calAnimation();
             },
             calAnimation() {
                 this.show = !this.show;

@@ -12,7 +12,7 @@ const routes = [
     {
         path: '/user/:uid',
         name: 'DataView',
-        component: () => import(/* webpackChunkName: "about" */ '../views/DataView.vue')
+        component: () => import(/* webpackChunkName: "about" */ '../views/Users.vue')
     },
 ]
 
