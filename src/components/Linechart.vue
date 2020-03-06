@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <chart ref="chart1" :options="orgOptions" :auto-resize="true"></chart>
+      <div>{{ $route.params.uid }}</div>
   </div>
 </template>
 

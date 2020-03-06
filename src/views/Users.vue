@@ -4,7 +4,7 @@
             <line-chart class="level-item has-text-centered"></line-chart>
             <Pie-chart class="level-item has-text-centered"></Pie-chart>
         </div>
-         <div>{{ $route.params.uid }}</div>
+        <div>{{ $route.params.uid }}</div>
     </div>
 </template>
 

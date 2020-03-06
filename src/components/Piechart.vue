@@ -1,6 +1,7 @@
 <template>
   <div class="echarts">
       <chart ref="pie" :options="orgOptions" :auto-resize="true"></chart>
+      <div>{{ $route.params.uid }}</div>
   </div>
 </template>
 <script>
@@ -8,6 +9,7 @@ import 'echarts/lib/component/title'; //引入标题组件
 import 'echarts/lib/component/legend'; //引入图例组件
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/chart/pie';
+import axios from 'axios';
   export default {
     data () {
     return {
@@ -55,6 +57,18 @@ import 'echarts/lib/chart/pie';
       this.refreshData();
     },
     methods: {
+       fetch_data() {
+      const path = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=pie`;
+      axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.post(path, {})
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          // eslint-disable-next-line
+          console.log(error);
+        });
+    },
     //添加refreshData方法进行自动设置数据
     refreshData() {
         //系列值
@@ -66,10 +80,12 @@ import 'echarts/lib/chart/pie';
       for (let i = 0; i < 50; i++) {
         //此处使用let是关键，也可以使用闭包。原理不再赘述
         setTimeout(() => {
+            this.fetch_data();
           this.orgOptions.series[0].data[i%5].value = sData[i%5].value + 200
         }, 1000 * i); //此处要理解为什么是1000*i
       }
     }
+
     }
   };
 </script>
