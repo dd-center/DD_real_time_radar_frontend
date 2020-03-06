@@ -9,7 +9,7 @@
                 <tr v-for="(i, index) in tableData" :key="i.name" v-show="show" class="td">
                     <td>No.{{index + 1}}</td>
 <!--                    <td><a>{{i.name}}</a></td>-->
-                    <td><router-link to="/user/foo">{{i.name}}</router-link></td>
+                    <td><router-link :to="'user/' + i.uid">{{i.name}}</router-link></td>
                     <td>{{i.value}}</td>
                 </tr>
             </transition-group>
