@@ -4,7 +4,6 @@ import router from './router'
 import 'bulma/css/bulma.css'
 import ECharts from 'vue-echarts'
 import 'echarts/lib/chart/line'
-
 Vue.component('chart', ECharts)
 Vue.config.productionTip = false
 
