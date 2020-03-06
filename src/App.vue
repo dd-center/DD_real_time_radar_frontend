@@ -3,9 +3,8 @@
         <nav class="navbar" role="navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="https://bulma.io">
-                    <img src="assets/logo.jpg" width="112" height="28" alt="Logo">
+                    <img src="assets/logo.jpg" width="28" height="28" alt="Logo">
                 </a>
-
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
                    data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
