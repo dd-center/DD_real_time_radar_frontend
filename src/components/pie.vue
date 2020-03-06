@@ -1,16 +1,14 @@
 <template>
   <div class="echarts">
-      <IEcharts ref="pie" :options="pie" :auto-resize="true"></IEcharts>
+      <chart ref="pie" :options="pie" :auto-resize="true"></chart>
   </div>
 </template>
 <script>
-import IEcharts from 'vue-echarts-v3/src/lite.js';
 import 'echarts/lib/component/title'; //引入标题组件
 import 'echarts/lib/component/legend'; //引入图例组件
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/chart/pie';
   export default {
-    components: {IEcharts},
     data: () => ({
       pie: {
          title: {
@@ -18,7 +16,7 @@ import 'echarts/lib/chart/pie';
     x: 'center'
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: 'item',
     formatter: '{a} <br/>{b} : {c} ({d}%)'
   },
   legend: {
