@@ -10,6 +10,7 @@ import 'echarts/lib/component/tooltip';
 import 'echarts/lib/chart/bar';
 import 'echarts/lib/component/title'; //引入标题组件
 import axios from 'axios';
+var global_index = 0
 export default {
   name: 'Linechart',
   data () {
@@ -19,24 +20,14 @@ export default {
     }
   },
   created(){
-      const path = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=bar`;
-      axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-      axios.post(path, {})
-        .then((response) => {
-          self.data_val = response.data.data
-          // console.log(self.data_val)
-          console.log("start")
+      this.update_data()
+      },
+  mounted() {
+  },
+  methods: {
+      update_innner_case(){
           const keys = Object.keys(self.data_val);
-          for (let i = 0; i < keys.length; i++) {
-            console.log(self.data_val[keys[i]].x_axis)
-          }
-          // const x_axis_val = response.data.data.x_axis
-          // console.log(keys)
-          for (let i = 0; i < 50; i++) {
-            //此处使用let是关键，也可以使用闭包。原理不再赘述
-            setTimeout(() => {
-              let index_val = keys[i%keys.length]
-              // console.log(index_val)
+          let index_val = keys[global_index%keys.length]
               this.orgOptions = {
                 title: {
                     text: index_val + " 同传弹幕统计",
@@ -65,19 +56,37 @@ export default {
                                 return rez
                             }
                   },
-            series: self.data_val[index_val].data
+                series: self.data_val[index_val].data
+              }
+              global_index += 1
+              console.log(global_index)
+      },
+    update_data(){
+      const path = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=bar`;
+      axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.post(path, {})
+        .then((response) => {
+          self.data_val = response.data.data
+          // console.log(self.data_val)
+          console.log("start")
+          const keys = Object.keys(self.data_val);
+          console.log("bar chart running")
+          for (let i = 0; i < keys.length; i++) {
+              // Finish the inner loop before you fetch the data again~
+              self.innder_timeout = setTimeout(this.update_innner_case, 3000*i)
           }
-            }, 3000 * i); //此处要理解为什么是1000*i
-          }
+          self.timeout = setTimeout(this.update_data, 3000 * keys.length-1)
         })
         .catch((error) => {
           // eslint-disable-next-line
           console.log(error);
+          self.timeout = setTimeout(this.update_data, 3000)
         });
-      },
-  mounted() {
+     }
   },
-  methods: {
-  }
+    destroyed() {
+            clearTimeout(self.innder_timeout)
+            clearTimeout(self.timeout)
+        }
 }
 </script>

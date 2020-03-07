@@ -23,7 +23,7 @@ import axios from 'axios';
       axios.post(path, {})
         .then((response) => {
           self.data_val = response.data.data
-            // console.log("test")
+            // console.log("pie chart running")
             // console.log(self.data_val)
             this.orgOptions = {
                  title: {
