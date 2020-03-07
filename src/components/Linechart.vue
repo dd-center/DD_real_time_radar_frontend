@@ -39,7 +39,7 @@ export default {
               console.log(index_val)
               this.orgOptions = {
                 title: {
-                    text: index_val + "同传弹幕统计",
+                    text: index_val + " 同传弹幕统计",
                     x: 'center'
                  },
                   xAxis: {
@@ -67,7 +67,7 @@ export default {
                   },
             series: self.data_val[index_val].data
           }
-            }, 1000 * i); //此处要理解为什么是1000*i
+            }, 3000 * i); //此处要理解为什么是1000*i
           }
         })
         .catch((error) => {
