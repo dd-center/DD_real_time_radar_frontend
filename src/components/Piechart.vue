@@ -58,7 +58,8 @@ import axios from 'axios';
         });
       },
     mounted() {
-      this.refreshData();
+      // this.refreshData();
+        this.fetch_data()
     },
     methods: {
        fetch_data() {
@@ -67,29 +68,33 @@ import axios from 'axios';
       axios.post(path, {})
         .then((response) => {
           // console.log(response.data.data);
-          this.updateData(response.data.data)
+          this.updateData(response.data.data);
+          self.timeout = setTimeout(this.fetch_data, 1000)
         })
         .catch((error) => {
           // eslint-disable-next-line
           console.log(error);
+          self.timeout = setTimeout(this.fetch_data, 1000)
         });
     },
     //添加refreshData方法进行自动设置数据
-    refreshData() {
-      for (let i = 0; i < 50; i++) {
-        //此处使用let是关键，也可以使用闭包。原理不再赘述
-        setTimeout(() => {
-            this.fetch_data();
-            }, 1000 * i); //Do this every 1 seconds
-        }
-        },
+    // refreshData() {
+    //   for (let i = 0; i < 50; i++) {
+    //     //此处使用let是关键，也可以使用闭包。原理不再赘述
+    //     setTimeout(() => {
+    //         this.fetch_data();
+    //         }, 1000 * i); //Do this every 1 seconds
+    //     }
+    //     },
         updateData(input_data){
            // iterate over input_data, and update
             this.orgOptions.series[0].data = input_data
             // console.log(input_data.data)
         }
-
-    }
+    },
+      destroyed() {
+        clearTimeout(self.timeout)
+      }
   };
 </script>
 <style scoped>

@@ -24,19 +24,19 @@ export default {
       axios.post(path, {})
         .then((response) => {
           self.data_val = response.data.data
-          console.log(self.data_val)
+          // console.log(self.data_val)
           console.log("start")
           const keys = Object.keys(self.data_val);
           for (let i = 0; i < keys.length; i++) {
             console.log(self.data_val[keys[i]].x_axis)
           }
           // const x_axis_val = response.data.data.x_axis
-          console.log(keys)
+          // console.log(keys)
           for (let i = 0; i < 50; i++) {
             //此处使用let是关键，也可以使用闭包。原理不再赘述
             setTimeout(() => {
               let index_val = keys[i%keys.length]
-              console.log(index_val)
+              // console.log(index_val)
               this.orgOptions = {
                 title: {
                     text: index_val + " 同传弹幕统计",
@@ -52,12 +52,12 @@ export default {
                   tooltip: {
                     trigger: 'axis',
                     formatter: function(data){
-                                console.log(data);
+                                // console.log(data);
                                 var colorSpan = color => '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' + color + '"></span>';
                                 let rez = '<p>' + data[0].axisValue + '</p>';
                                 data.forEach(function(data_value) {
                                     if(!data_value.value == ""){
-                                      console.log(data_value);
+                                      // console.log(data_value);
                                       var xx = '<p>'   + colorSpan(data_value.color) + ' ' + data_value.seriesName + ': ' + data_value.value + '</p>'
                                       rez += xx;
                                     }

@@ -38,12 +38,12 @@
                 .then((response) => {
                 console.log(response.data.data)
                 this.tableData = response.data.data
-                setTimeout(this.uploadDate, 3000)
+                self.timeout = setTimeout(this.uploadDate, 3000)
                 })
                 .catch((error) => {
                 // eslint-disable-next-line
                 console.log(error);
-                setTimeout(this.uploadDate, 3000)
+                self.timeout = setTimeout(this.uploadDate, 3000)
             });
         },
             moniter() {
@@ -54,6 +54,9 @@
         },
         created() {
             this.moniter()
+        },
+        destroyed() {
+            clearTimeout(self.timeout)
         }
     }
 </script>
