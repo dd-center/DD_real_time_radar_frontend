@@ -8,89 +8,76 @@
 <script>
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/chart/bar';
-let data_val = [
-        {
-            name: '邮件营销',
-            type: 'bar',
-            stack: '总量',
-            data: [120, 132, 101, 134, '', 230, 210]
-        },
-        {
-            name: '联盟广告',
-            type: 'bar',
-            stack: '总量',
-            data: [220, 191, '', 234, 290, 330, 310]
-        },
-        {
-            name: '视频广告',
-            type: 'bar',
-            stack: '总量',
-            data: [150, 232, 201, 330, 410]
-        },
-        {
-            name: '直接访问',
-            type: 'bar',
-            stack: '总量',
-            data: [320, 332, 334, 390, 330, 320]
-        },
-        {
-            name: '搜索引擎',
-            type: 'bar',
-            stack: '总量',
-            data: [820, 932, 901, 934, 1290, 1330, 1320, 1320, 1320]
-        }
-    ]
+import 'echarts/lib/component/title'; //引入标题组件
+import axios from 'axios';
 export default {
   name: 'Linechart',
   data () {
     return {
       orgOptions: {},
+      data_val: undefined
     }
   },
+  created(){
+      const path = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=bar`;
+      axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.post(path, {})
+        .then((response) => {
+          self.data_val = response.data.data
+          console.log(self.data_val)
+          console.log("start")
+          const keys = Object.keys(self.data_val);
+          for (let i = 0; i < keys.length; i++) {
+            console.log(self.data_val[keys[i]].x_axis)
+          }
+          // const x_axis_val = response.data.data.x_axis
+          console.log(keys)
+          for (let i = 0; i < 50; i++) {
+            //此处使用let是关键，也可以使用闭包。原理不再赘述
+            setTimeout(() => {
+              let index_val = keys[i%keys.length]
+              console.log(index_val)
+              this.orgOptions = {
+                title: {
+                    text: index_val + "同传弹幕统计",
+                    x: 'center'
+                 },
+                  xAxis: {
+                      type: 'category',
+                      data: self.data_val[index_val].x_axis
+                  },
+                  yAxis: {
+                      type: 'value'
+                  },
+                  tooltip: {
+                    trigger: 'axis',
+                    formatter: function(data){
+                                console.log(data);
+                                var colorSpan = color => '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' + color + '"></span>';
+                                let rez = '<p>' + data[0].axisValue + '</p>';
+                                data.forEach(function(data_value) {
+                                    if(!data_value.value == ""){
+                                      console.log(data_value);
+                                      var xx = '<p>'   + colorSpan(data_value.color) + ' ' + data_value.seriesName + ': ' + data_value.value + '</p>'
+                                      rez += xx;
+                                    }
+                                });
+                                return rez
+                            }
+                  },
+            series: self.data_val[index_val].data
+          }
+            }, 1000 * i); //此处要理解为什么是1000*i
+          }
+        })
+        .catch((error) => {
+          // eslint-disable-next-line
+          console.log(error);
+        });
+      },
   mounted() {
-    for (let i = 0; i < 50; i++) {
-        //此处使用let是关键，也可以使用闭包。原理不再赘述
-        setTimeout(() => {
-          let index_val = i%5
-          this.orgOptions = {
-        xAxis: {
-            type: 'category',
-            data: data_val[index_val].data
-        },
-        yAxis: {
-            type: 'value'
-        },
-        tooltip: {
-          trigger: 'axis',
-        },
-        series: [{
-            'name': data_val[index_val].name,
-            'data': data_val[index_val].data,
-            'type': 'bar',
-            'stack': '总量'
-        },
-        {
-            'name': data_val[index_val+1].name,
-            'data': data_val[index_val+1].data,
-            'type': 'bar',
-            'stack': '总量'
-        }]
-      }
-        }, 1000 * i); //此处要理解为什么是1000*i
-      }
-
-    // this.refreshData();
   },
   methods: {
-    //添加refreshData方法进行自动设置数据
-    refreshData() {
-      //横轴数据
-      // let xData = this.orgOptions.xAxis.data;
-        //系列值
-      let  sData = this.orgOptions.series[0].data;
-      console.log(sData)
-
-    }
   }
 }
 </script>

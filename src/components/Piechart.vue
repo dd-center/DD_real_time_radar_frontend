@@ -23,11 +23,11 @@ import axios from 'axios';
       axios.post(path, {})
         .then((response) => {
           self.data_val = response.data.data
-            console.log("test")
-            console.log(self.data_val)
+            // console.log("test")
+            // console.log(self.data_val)
             this.orgOptions = {
                  title: {
-                    text: '饼图程序调用高亮示例',
+                    text: '同传man直播间弹幕比例',
                     x: 'center'
                  },
                 tooltip: {
@@ -66,7 +66,7 @@ import axios from 'axios';
       axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.post(path, {})
         .then((response) => {
-          console.log(response.data.data);
+          // console.log(response.data.data);
           this.updateData(response.data.data)
         })
         .catch((error) => {
@@ -86,7 +86,7 @@ import axios from 'axios';
         updateData(input_data){
            // iterate over input_data, and update
             this.orgOptions.series[0].data = input_data
-            console.log(input_data.data)
+            // console.log(input_data.data)
         }
 
     }
