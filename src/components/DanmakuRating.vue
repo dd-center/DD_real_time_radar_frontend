@@ -18,53 +18,42 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
         name: "DanmakuRating",
         data() {
             return {
-                show: true,
-                header: ["用户名", "同传条数"],
-                tableData: [],
-                rawData: [
-                    {
-                        "name": "空气龙",
-                        "value": 2022,
-                        "uid": 13967
-                    },
-                    {
-                        "name": "2龙",
-                        "value": 2024,
-                        "uid": 23333
-                    }
-                ]
+              show: true,
+              header: ["用户名", "同传条数"],
+              tableData: [],
+              data_val: undefined
             }
         },
         methods: {
-            calRating() {
-                return this.rawData.slice().sort(function (a, b) {
-                    return (b.value - a.value)
+            uploadDate() {
+                // initialize data
+                const path = `http://localhost:5000/processjson?uid=000000&chart_type=ladder`;
+                axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+                axios.post(path, {})
+                .then((response) => {
+                console.log(response.data.data)
+                this.tableData = response.data.data
+                setTimeout(this.uploadDate, 3000)
                 })
-            },
-            updateData: async function () {
-                this.calAnimation();
-                this.tableData = this.calRating();
-                await new Promise(resolve => setTimeout(resolve, 100));
-                this.calAnimation();
-            },
-            calAnimation() {
-                this.show = !this.show;
+                .catch((error) => {
+                // eslint-disable-next-line
+                console.log(error);
+                setTimeout(this.uploadDate, 3000)
+            });
+        },
+            moniter() {
+                this.uploadDate()
             }
         },
         watch: {
-            rawData: {
-                handler: function () {
-                    this.updateData()
-                },
-                deep: true
-            }
         },
         created() {
-            this.updateData()
+            this.moniter()
         }
     }
 </script>
