@@ -16,7 +16,8 @@ export default {
   data () {
     return {
       orgOptions: {},
-      data_val: undefined
+      data_val: undefined,
+      isStop: false
     }
   },
   created(){
@@ -25,9 +26,16 @@ export default {
   mounted() {
   },
   methods: {
-      update_innner_case(){
-          const keys = Object.keys(self.data_val);
-          let index_val = keys[global_index%keys.length]
+    update_data(){
+      const path = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=bar`;
+      axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.post(path, {})
+        .then((response) => {
+          this.data_val = response.data.data
+          console.log("start")
+          const keys = Object.keys(this.data_val);
+              let index_val = keys[global_index%keys.length]
+
               this.orgOptions = {
                 title: {
                     text: index_val + " 同传弹幕统计",
@@ -35,7 +43,7 @@ export default {
                  },
                   xAxis: {
                       type: 'category',
-                      data: self.data_val[index_val].x_axis
+                      data: this.data_val[index_val].x_axis
                   },
                   yAxis: {
                       type: 'value'
@@ -56,37 +64,23 @@ export default {
                                 return rez
                             }
                   },
-                series: self.data_val[index_val].data
+                series: this.data_val[index_val].data
               }
               global_index += 1
-              console.log(global_index)
-      },
-    update_data(){
-      const path = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=bar`;
-      axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-      axios.post(path, {})
-        .then((response) => {
-          self.data_val = response.data.data
-          // console.log(self.data_val)
-          console.log("start")
-          const keys = Object.keys(self.data_val);
-          console.log("bar chart running")
-          for (let i = 0; i < keys.length; i++) {
-              // Finish the inner loop before you fetch the data again~
-              self.innder_timeout = setTimeout(this.update_innner_case, 3000*i)
-          }
-          self.timeout = setTimeout(this.update_data, 3000 * keys.length-1)
+              console.log(global_index);
+              if (this.isStop) return
+              this.timeout = setTimeout(this.update_data, 1000)
         })
         .catch((error) => {
           // eslint-disable-next-line
           console.log(error);
-          self.timeout = setTimeout(this.update_data, 3000)
+          if (this.isStop) return
+          this.timeout = setTimeout(this.update_data, 1000)
         });
-     }
+    }
   },
-    destroyed() {
-            clearTimeout(self.innder_timeout)
-            clearTimeout(self.timeout)
-        }
+      destroyed() {
+        this.isStop = true
+      }
 }
 </script>

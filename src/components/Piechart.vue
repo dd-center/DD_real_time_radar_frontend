@@ -14,7 +14,8 @@ import axios from 'axios';
     data () {
     return {
       orgOptions: {},
-        data_val: undefined
+        data_val: undefined,
+        isStop: false
     }
     },
       created(){
@@ -22,9 +23,8 @@ import axios from 'axios';
       axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.post(path, {})
         .then((response) => {
-          self.data_val = response.data.data
+          this.data_val = response.data.data
             // console.log("pie chart running")
-            // console.log(self.data_val)
             this.orgOptions = {
                  title: {
                     text: '同传man直播间弹幕比例',
@@ -68,13 +68,16 @@ import axios from 'axios';
       axios.post(path, {})
         .then((response) => {
           // console.log(response.data.data);
+            console.log("pie chart");
           this.updateData(response.data.data);
-          self.timeout = setTimeout(this.fetch_data, 1000)
+          if (this.isStop) return
+          setTimeout(this.fetch_data, 1000)
         })
         .catch((error) => {
           // eslint-disable-next-line
           console.log(error);
-          self.timeout = setTimeout(this.fetch_data, 1000)
+          if (this.isStop) return
+          setTimeout(this.fetch_data, 1000)
         });
     },
     //添加refreshData方法进行自动设置数据
@@ -93,7 +96,7 @@ import axios from 'axios';
         }
     },
       destroyed() {
-        clearTimeout(self.timeout)
+        this.isStop = true
       }
   };
 </script>
