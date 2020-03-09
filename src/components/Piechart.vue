@@ -19,7 +19,7 @@ import axios from 'axios';
     }
     },
       created(){
-          const path = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=pie`;
+          const path = `http://18.223.43.172:5000/processjson?uid=${this.$route.params.uid}&chart_type=pie`;
       axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.post(path, {})
         .then((response) => {
@@ -63,7 +63,7 @@ import axios from 'axios';
     },
     methods: {
        fetch_data() {
-      const path = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=pie`;
+      const path = `http://18.223.43.172:5000/processjson?uid=${this.$route.params.uid}&chart_type=pie`;
       axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.post(path, {})
         .then((response) => {

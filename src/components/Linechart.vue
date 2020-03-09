@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     update_data(){
-      const path = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=bar`;
+      const path = `http://18.223.43.172:5000/processjson?uid=${this.$route.params.uid}&chart_type=bar`;
       axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
       axios.post(path, {})
         .then((response) => {
