@@ -69,13 +69,13 @@ export default {
               global_index += 1
               console.log(global_index);
               if (this.isStop) return
-              this.timeout = setTimeout(this.update_data, 1000)
+              this.timeout = setTimeout(this.update_data, 3000)
         })
         .catch((error) => {
           // eslint-disable-next-line
           console.log(error);
           if (this.isStop) return
-          this.timeout = setTimeout(this.update_data, 1000)
+          this.timeout = setTimeout(this.update_data, 3000)
         });
     }
   },
