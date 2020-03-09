@@ -60,7 +60,7 @@
         },
           destroyed() {
             this.isStop = true
-          }
+        }
     }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="echarts">
       <chart ref="pie" :options="orgOptions" :auto-resize="true"></chart>
-      <div>{{ $route.params.uid }}</div>
+<!--      <div>{{ $route.params.uid }}</div>-->
   </div>
 </template>
 <script>
