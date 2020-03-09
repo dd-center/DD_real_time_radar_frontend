@@ -1,13 +1,13 @@
 <template>
     <div class="hello">
-        <tag type="info">{{ "rank: " + header_value }}</tag>
+        <tag type="danger">{{ header_value }}</tag>
     </div>
 </template>
 
 <script>
     import axios from 'axios';
     export default {
-        name: "rank",
+        name: "is_working",
         data() {
             return {
               show: true,
@@ -21,11 +21,11 @@
         methods: {
             updateData() {
                 // initialize data
-                const path = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=rank`;
+                const path = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=isworking`;
                 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
                 axios.post(path, {})
                 .then((response) => {
-                console.log("Rank")
+                console.log("is working")
                 this.header_value = response.data.data;
                 if (this.isStop) return;
                     this.timeout = setTimeout(this.updateData, 1000)
