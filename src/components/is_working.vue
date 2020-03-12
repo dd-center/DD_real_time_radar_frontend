@@ -21,7 +21,7 @@
         methods: {
             updateData() {
                 // initialize data
-                const path = `http://18.223.43.172:5000/processjson?uid=${this.$route.params.uid}&chart_type=isworking`;
+                const path = `http://47.240.116.247:5000/processjson?uid=${this.$route.params.uid}&chart_type=isworking`;
                 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
                 axios.post(path, {})
                 .then((response) => {

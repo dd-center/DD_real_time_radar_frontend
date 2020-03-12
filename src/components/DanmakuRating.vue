@@ -33,7 +33,7 @@
         methods: {
             uploadDate() {
                 // initialize data
-                const path = `http://18.223.43.172:5000/processjson?uid=000000&chart_type=ladder`;
+                const path = `http://47.240.116.247:5000/processjson?uid=000000&chart_type=ladder`;
                 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
                 axios.post(path, {})
                 .then((response) => {
