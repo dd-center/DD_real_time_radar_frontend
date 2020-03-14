@@ -1,28 +1,19 @@
 <template>
   <div class="card">
     <h2 class="title">{{ title }}</h2>
-    <chart ref="pie" :options="options" :auto-resize="true"></chart>
   </div>
 </template>
 
 <script>
 
-import mixin from '../mixin'
-import 'echarts/lib/component/legend'; //引入图例组件
-import 'echarts/lib/component/tooltip';
-import 'echarts/lib/chart/pie';
-
 export default {
-  mixins: [mixin],
-
   data: () => ({
-    title: '直播间弹幕比例',
-    options: {},
+    title: '同传弹幕查询',
   }),
 
   created() {
-    // this.once = true
-    this.url = `http://47.240.116.247:5000/processjson?uid=${this.$route.params.uid}&chart_type=pie`
+    this.once = true
+    this.url = `http://47.240.116.247:5000/processjson?uid=${this.$route.params.uid}&chart_type=message`
   },
 
   watch: {

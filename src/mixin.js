@@ -9,9 +9,10 @@ export default {
       try {
         const { data } = await this.$axios.post(this.url)
         this.data = data.data
+        if (this.stopped || this.once) return
+        this.timeout = setTimeout(this.update, 3000)
       } catch (error) {
         console.error(error)
-      } finally {
         if (this.stopped) return
         this.timeout = setTimeout(this.update, 3000)
       }
@@ -20,7 +21,7 @@ export default {
   mounted() {
     this.update()
   },
-  destroyed() {
+  beforeDestroy() {
     this.stopped = true
     clearTimeout(this.timeout)
   },

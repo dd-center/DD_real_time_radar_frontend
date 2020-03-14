@@ -1,71 +1,63 @@
 <template>
 	<div class="danmaku-rating">
+    <p>TODO: 如果增加了其他字段可能会修改样式，不用表格。</p>
 		<table class="table">
-			<tr>
-				<th>排名</th>
-				<th>用户名</th>
-				<th>同传条数</th>
-			</tr>
-			<transition-group tag="tbody" name="component-fade">
-				<tr v-for="(i, index) in tableData" :key="i.name" v-show="show" class="td">
+      <thead>
+        <tr>
+          <th>排名</th>
+          <th>用户名</th>
+          <th>同传条数</th>
+        </tr>
+      </thead>
+			<tbody>
+				<tr v-for="(i, index) in data" :key="i.name" v-show="show">
 					<td>No.{{index + 1}}</td>
 					<td><router-link :to="'user/' + i.uid">{{i.name}}</router-link></td>
 					<td>{{i.value}}</td>
 				</tr>
-			</transition-group>
+			</tbody>
 		</table>
 	</div>
 </template>
 
 <script>
 
+import mixin from '../mixin'
+import 'echarts/lib/chart/line'
+
 export default {
+  mixins: [mixin],
+
   data: () => ({
     show: true,
-    tableData: [],
-    data_val: undefined,
-    isStop: false,
-    timeout: null,
   }),
-  methods: {
-    async monitor() {
-      try {
-        const { data } = await this.$axios.post(`http://47.240.116.247:5000/processjson?uid=000000&chart_type=ladder`)
-        this.tableData = data.data
-      } catch (error) {
-        console.log(error)
-      } finally {
-        if (this.isStop) return
-        this.timeout = setTimeout(this.uploadDate, 3000)
-      }
-    },
-  },
+
   created() {
-    this.monitor()
-  },
-  destroyed() {
-    this.isStop = true
+    this.url = `http://47.240.116.247:5000/processjson?uid=000000&chart_type=ladder`
   },
 }
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
-.danmaku-rating {
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+table {
+  margin: 2rem auto;
+  max-width: 960px;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.td {
-  border-bottom: 1px solid #ebeef5;
+th, td {
+  padding: 0.6em 1em;
 }
 
-.component-fade-enter-active, .component-fade-leave-active {
-  transition: opacity .5s ease;
-}
+tr {
+  border: 1px solid #dfe2e5;
 
-.component-fade-enter, .component-fade-leave-to {
-  opacity: 0;
+  tbody &:nth-child(odd) {
+    background-color: #f6f8fa;
+  }
 }
 
 </style>
