@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <h2 class="title">{{ title }}</h2>
-    <chart ref="chart1" :options="orgOptions" :auto-resize="true"></chart>
+    <chart ref="chart1" :options="options" :auto-resize="true"></chart>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
 
   data: () => ({
     title: '',
-    orgOptions: {},
+    options: {},
   }),
 
   created() {
@@ -26,15 +26,15 @@ export default {
   },
 
   watch: {
-    data(val) {
-      const keys = Object.keys(val)
+    data(value) {
+      const keys = Object.keys(value)
       const key = keys[index % keys.length]
       this.title = key + ' 同传弹幕统计'
 
-      this.orgOptions = {
+      this.options = {
         xAxis: {
           type: 'category',
-          data: val[key].x_axis,
+          data: value[key].x_axis,
         },
         yAxis: {
           type: 'value',
@@ -52,7 +52,7 @@ export default {
             return rez
           }
         },
-        series: val[key].data,
+        series: value[key].data,
       }
       index += 1
     },
@@ -60,3 +60,7 @@ export default {
 }
 
 </script>
+
+<style scoped>
+
+</style>
