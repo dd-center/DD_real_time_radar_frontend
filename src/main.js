@@ -4,8 +4,11 @@ import router from './router'
 import 'bulma/css/bulma.css'
 import ECharts from 'vue-echarts'
 import 'echarts/lib/chart/line'
+import axios from 'axios'
+
 Vue.component('chart', ECharts)
 Vue.config.productionTip = false
+Vue.prototype.$axios = axios
 
 new Vue({
     router,

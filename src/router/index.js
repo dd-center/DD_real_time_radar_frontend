@@ -9,13 +9,13 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/',
-        name: 'DataView',
-        component: () => import(/* webpackChunkName: "about" */ '../views/DataView.vue')
+        name: 'Home',
+        component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
     },
     {
         path: '/user/:uid',
-        name: 'DataView',
-        component: () => import(/* webpackChunkName: "about" */ '../views/Users.vue')
+        name: 'User',
+        component: () => import(/* webpackChunkName: "user" */ '../views/User.vue'),
     },
 ]
 
