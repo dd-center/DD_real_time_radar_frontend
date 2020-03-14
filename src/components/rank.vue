@@ -1,6 +1,6 @@
 <template>
     <div class="hello">
-        <tag type="info">{{ "rank: " + header_value }}</tag>
+        <div type="tag info">{{ "rank: " + header_value }}</div>
     </div>
 </template>
 

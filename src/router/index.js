@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VueBlu from 'vue-blu'
-import 'vue-blu/dist/css/vue-blu.min.css'
-Vue.use(VueBlu)
+// import VueBlu from 'vue-blu'
+// import 'vue-blu/dist/css/vue-blu.min.css'
+// Vue.use(VueBlu)
 // run npm add core-js
 Vue.use(VueRouter)
 
