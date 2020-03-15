@@ -19,11 +19,9 @@
 		</table>
 	</div>
 </template>
-
 <script>
 
 import mixin from '../mixin'
-import 'echarts/lib/chart/line'
 
 export default {
   mixins: [mixin],

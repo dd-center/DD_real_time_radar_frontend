@@ -36,7 +36,7 @@ export default {
           name: '访问来源',
           type: 'pie',
           radius: '55%',
-          data: value,
+          data: value.pie_data,
           itemStyle: {
             emphasis: {
               shadowBlur: 10,
