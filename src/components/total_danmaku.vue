@@ -1,6 +1,6 @@
 <template>
     <div class="hello">
-        <tag type="primary">{{ "弹幕总数: " + header_value }}</tag>
+        <div type="tag primary">{{ "弹幕总数: " + header_value }}</div>
     </div>
 </template>
 

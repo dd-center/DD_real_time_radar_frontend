@@ -1,85 +1,63 @@
 <template>
-    <div>
-        <table id="Rating" class="table">
-            <tr>
-                <th>排名</th>
-                <th v-for="h in header" :key="h">{{h}}</th>
-            </tr>
-            <transition-group tag="tbody" name="component-fade">
-                <tr v-for="(i, index) in tableData" :key="i.name" v-show="show" class="td">
-                    <td>No.{{index + 1}}</td>
-<!--                    <td><a>{{i.name}}</a></td>-->
-                    <td><router-link :to="'user/' + i.uid">{{i.name}}</router-link></td>
-                    <td>{{i.value}}</td>
-                </tr>
-            </transition-group>
-        </table>
-    </div>
+	<div class="danmaku-rating">
+    <p>TODO: 如果增加了其他字段可能会修改样式，不用表格。</p>
+		<table class="table">
+      <thead>
+        <tr>
+          <th>排名</th>
+          <th>用户名</th>
+          <th>同传条数</th>
+        </tr>
+      </thead>
+			<tbody>
+				<tr v-for="(i, index) in data" :key="i.name" v-show="show">
+					<td>No.{{index + 1}}</td>
+					<td><router-link :to="'user/' + i.uid">{{i.name}}</router-link></td>
+					<td>{{i.value}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </template>
 
 <script>
-    import axios from 'axios';
-    export default {
-        name: "DanmakuRating",
-        data() {
-            return {
-              show: true,
-              header: ["用户名", "同传条数"],
-              tableData: [],
-              data_val: undefined,
-              isStop: false
-            }
-        },
-        methods: {
-            uploadDate() {
-                // initialize data
-                const path = `http://47.240.116.247:5000/processjson?uid=000000&chart_type=ladder`;
-                axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-                axios.post(path, {})
-                .then((response) => {
-                console.log(response.data.data)
-                this.tableData = response.data.data;
-                if (this.isStop) return
-                this.timeout = setTimeout(this.uploadDate, 3000)
-                })
-                .catch((error) => {
-                // eslint-disable-next-line
-                console.log(error);
-                if (this.isStop) return
-                this.timeout = setTimeout(this.uploadDate, 3000)
-            });
-        },
-            moniter() {
-                this.uploadDate()
-            }
-        },
-        watch: {
-        },
-        created() {
-            this.moniter()
-        },
-          destroyed() {
-            this.isStop = true
-        }
-    }
+
+import mixin from '../mixin'
+import 'echarts/lib/chart/line'
+
+export default {
+  mixins: [mixin],
+
+  data: () => ({
+    show: true,
+  }),
+
+  created() {
+    this.url = `http://47.240.116.247:5000/processjson?uid=000000&chart_type=ladder`
+  },
+}
+
 </script>
 
-<style scoped>
-    #Rating {
-        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-    }
+<style lang="scss" scoped>
 
-    .td {
-        border-bottom: 1px solid #ebeef5;
-    }
+table {
+  margin: 2rem auto;
+  max-width: 960px;
+  width: 100%;
+  border-collapse: collapse;
+}
 
-    .component-fade-enter-active, .component-fade-leave-active {
-        transition: opacity .5s ease;
-    }
+th, td {
+  padding: 0.6em 1em;
+}
 
-    .component-fade-enter, .component-fade-leave-to
-        /* .component-fade-leave-active for below version 2.1.8 */
-    {
-        opacity: 0;
-    }
+tr {
+  border: 1px solid #dfe2e5;
+
+  tbody &:nth-child(odd) {
+    background-color: #f6f8fa;
+  }
+}
+
 </style>
