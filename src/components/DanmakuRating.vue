@@ -1,18 +1,23 @@
 <template>
 	<div class="danmaku-rating">
     <p>TODO: 如果增加了其他字段可能会修改样式，不用表格。</p>
+		<meta name="referrer" content="no-referrer">
 		<table class="table">
       <thead>
         <tr>
           <th>排名</th>
+          <th>头像</th>
           <th>用户名</th>
+          <th>签名</th>
           <th>同传条数</th>
         </tr>
       </thead>
 			<tbody>
 				<tr v-for="(i, index) in data" :key="i.name" v-show="show">
 					<td>No.{{index + 1}}</td>
+					<td><img :src="i.face" alt="头像不可用"/></td>
 					<td><router-link :to="'user/' + i.uid">{{i.name}}</router-link></td>
+                    <td>{{i.sign}}</td>
 					<td>{{i.value}}</td>
 				</tr>
 			</tbody>
