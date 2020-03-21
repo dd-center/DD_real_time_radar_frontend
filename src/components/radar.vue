@@ -16,7 +16,7 @@ export default {
   mixins: [mixin],
 
   data: () => ({
-    title: '雷达图',
+    title: '同传替身能力值',
     options: {},
   }),
 
@@ -26,11 +26,14 @@ export default {
   },
 
   watch: {
-    data() {
+    data(value) {
       this.options = {
-        tooltip: {
-          trigger: 'item'
-        },
+        // tooltip: {
+        //   trigger: 'item',
+        //   formatter(data) {
+        //     console.log(data)
+        //   }
+        // },
           radar: {
         name: {
             textStyle: {
@@ -40,23 +43,12 @@ export default {
                 padding: [3, 5]
             }
         },
-        indicator: [
-            { name: '破坏力', max: 1.0},
-            { name: '速度', max: 1.0},
-            { name: '射程距离', max: 1.0},
-            { name: '持续力', max: 1.0},
-            { name: '精密动作性', max: 1.0},
-            { name: '成长性', max: 1.0}
-        ]
+        indicator: value.indicator
     }, series: [{
         name: '同传替身能力值',
         type: 'radar',
         // areaStyle: {normal: {}},
-        data: [
-            {
-                value: [0.4, 0.1, 0.2, 0.9, 1.0, 0.5]
-            }
-        ]
+        data: value.data
         }]
       }
     },

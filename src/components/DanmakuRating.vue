@@ -9,7 +9,7 @@
           <th>头像</th>
           <th>用户名</th>
           <th>签名</th>
-          <th>同传条数</th>
+          <th>同传总字数</th>
         </tr>
       </thead>
 			<tbody>
