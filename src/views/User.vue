@@ -4,6 +4,7 @@
     <Status-combination class="level-item has-text-centered"></Status-combination>
     <line-chart/>
     <pie-chart/>
+    <radar-chart/>
   </div>
 </template>
 
@@ -12,12 +13,14 @@
 const StatusCombination = () => import("../components/status_combination")
 const LineChart = () => import("../components/Linechart")
 const PieChart = () => import("../components/Piechart")
+const RadarChart = () => import("../components/radar")
 
 export default {
   components: {
     StatusCombination,
     LineChart,
     PieChart,
+    RadarChart,
   },
 }
 
