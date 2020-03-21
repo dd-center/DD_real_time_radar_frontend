@@ -1,18 +1,15 @@
-// 在vue-config.js 中加入
-const CompressionWebpackPlugin = require('compression-webpack-plugin');
-const isProduction = process.env.NODE_ENV === 'production';
-
+const CompressionPlugin = require("compression-webpack-plugin");
 module.exports = {
- // 配置webpack
- configureWebpack: config => {
-  if (isProduction) {
-   // 开启gzip压缩
-   config.plugins.push(new CompressionWebpackPlugin({
-    algorithm: 'gzip',
-    test: /\.js$|\.html$|\.json$|\.css/,
-    threshold: 10240,
-    minRatio: 0.8
-   }))
+  productionSourceMap: false,
+  configureWebpack:config=>{
+    if(process.env.NODE_ENV === 'production')
+    {
+      return {
+        plugins:[new CompressionPlugin({
+          test: /\.js(\?.*)?$|.css(\?.*)?$/i,
+          deleteOriginalAssets: false,
+        })]
+      }
+    }
   }
- }
-};
+}

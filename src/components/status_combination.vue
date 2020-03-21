@@ -30,7 +30,7 @@
 
         watch: {
             data(value) {
-                console.log(value)
+                // console.log(value)
                 this.danmaku_counts = value.danmaku_counts
                 this.current_rank = value.current_rank
                 this.is_working = value.is_working
