@@ -1,16 +1,18 @@
-const CompressionPlugin = require("compression-webpack-plugin");
-module.export = {
-  configureWebpack: () => {
-     if (process.env.NODE_ENV === 'production') {
-      return {
-        plugins: [
-          new CompressionPlugin({
-            test: /\.js$|\.html$|\.css$|\.jpg$|\.jpeg$|\.png/, // 需要压缩的文件类型
-            threshold: 10240, // 归档需要进行压缩的文件大小最小值，我这个是10K以上的进行压缩
-            deleteOriginalAssets: false // 是否删除原文件
-          })
-        ]
-      }
-    }
+// 在vue-config.js 中加入
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const isProduction = process.env.NODE_ENV === 'production';
+
+module.exports = {
+ // 配置webpack
+ configureWebpack: config => {
+  if (isProduction) {
+   // 开启gzip压缩
+   config.plugins.push(new CompressionWebpackPlugin({
+    algorithm: 'gzip',
+    test: /\.js$|\.html$|\.json$|\.css/,
+    threshold: 10240,
+    minRatio: 0.8
+   }))
   }
+ }
 };
