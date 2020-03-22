@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <h2 class="title">{{ title }}</h2>
-    <chart ref="pie" :options="options" :auto-resize="true"></chart>
+    <chart ref="monitor" :options="options" :auto-resize="true"></chart>
   </div>
 </template>
 
@@ -16,15 +16,14 @@ export default {
   mixins: [mixin],
 
   data: () => ({
-    title: '直播间弹幕比例',
+    title: '同传man雷达',
     options: {},
     stopped: false,
     timeout: null,
   }),
 
   created() {
-    // this.once = true
-    this.url = `http://47.240.116.247:5000/processjson?uid=${this.$route.params.uid}&chart_type=pie`
+    this.url = `http://47.240.116.247:5000/processjson?uid=000000&chart_type=monitor`
   },
 
   watch: {
@@ -32,13 +31,48 @@ export default {
       this.options = {
         tooltip: {
           trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)',
+          // formatter: '{b} : {c}',
+          formatter(data) {
+              console.log(data)
+            if (data.seriesIndex === 0) {
+                let rez = '直播间:' + data.name + '<br>' + '同传人数:' + data.value
+                // console.log(data.seriesIndex)
+                return rez
+              }
+            else{
+                let rez = '同传man:' + data.name + '<br>' + '同传时间:' + data.value
+                // console.log(data.seriesIndex)
+                return rez
+            }
+          }
         },
-        series: [{
-          name: '直播间：弹幕数（弹幕占比）',
+        series: [
+        {
+            name: '直播间',
+            type: 'pie',
+            selectedMode: 'single',
+            radius: [0, '40%'],
+
+            itemStyle : {
+                normal : {
+                    label : {
+                        show : false   //隐藏标示文字
+                    },
+                    labelLine : {
+                        show : false   //隐藏标示线
+                    }
+                }
+            },
+            labelLine: {
+                show: false
+            },
+            data: value.room_value
+        },
+        {
+          name: '正在同传: 同传时间',
           type: 'pie',
-          radius: '55%',
-          data: value.pie_data,
+          radius: ['50%', '70%'],
+          data: value.man_value,
           itemStyle: {
             emphasis: {
               shadowBlur: 10,
@@ -46,17 +80,17 @@ export default {
               shadowColor: 'rgba(0, 0, 0, 0.5)',
             },
           },
-        }],
+        },],
       }
     },
   },
   methods: {
     highlight() {
       try {
-        const pie = this.$refs.pie;
+        const pie = this.$refs.monitor;
         if (typeof this.options.series != "undefined") {
           const dataLen = this.options.series[0].data.length;
-          console.log(dataLen);
+          // console.log(dataLen);
           pie.dispatchAction({
             type: 'downplay',
             seriesIndex: 0,
@@ -69,11 +103,11 @@ export default {
             dataIndex
           });
           // 显示 tooltip
-          pie.dispatchAction({
-            type: 'showTip',
-            seriesIndex: 0,
-            dataIndex
-          });
+          // pie.dispatchAction({
+          //   type: 'showTip',
+          //   seriesIndex: 0,
+          //   dataIndex
+          // });
         }
         if (this.stopped) return;
         this.timeout = setTimeout(this.highlight, 1000)

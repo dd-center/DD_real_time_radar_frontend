@@ -10,10 +10,10 @@
 
 <script>
 
-const StatusCombination = () => import("../components/status_combination")
-const LineChart = () => import("../components/Linechart")
-const PieChart = () => import("../components/Piechart")
-const RadarChart = () => import("../components/radar")
+const StatusCombination = () => import("../components/status_combination");
+const LineChart = () => import("../components/Linechart");
+const PieChart = () => import("../components/Piechart");
+const RadarChart = () => import("../components/radar");
 
 export default {
   components: {
