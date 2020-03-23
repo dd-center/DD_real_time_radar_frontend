@@ -23,7 +23,7 @@ export default {
   }),
 
   created() {
-    // this.once = true
+    this.once = true
     this.url = `http://47.240.116.247:5000/processjson?uid=${this.$route.params.uid}&chart_type=pie`
   },
 
@@ -56,7 +56,6 @@ export default {
         const pie = this.$refs.pie;
         if (typeof this.options.series != "undefined") {
           const dataLen = this.options.series[0].data.length;
-          console.log(dataLen);
           pie.dispatchAction({
             type: 'downplay',
             seriesIndex: 0,

@@ -3,7 +3,7 @@
     <h2 class="title">TODO: 这里缺名字</h2>
     <div class="content">
       <p type="tag info">排名：{{ data.current_rank }}</p>
-      <p type="tag info">弹幕数量：{{ data.danmaku_counts }}</p>
+      <p type="tag info">总字数：{{ data.danmaku_counts }}</p>
       <p type="tag info">当前状态：{{ data.is_working }}</p>
       <p type="tag info">个人空间：<a target="_blank" :href="space">{{ space }}</a></p>
       <p type="tag info">签名：{{ data.sign }}</p>

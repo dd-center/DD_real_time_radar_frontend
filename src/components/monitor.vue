@@ -16,7 +16,7 @@ export default {
   mixins: [mixin],
 
   data: () => ({
-    title: '同传man雷达',
+    title: '同传 man 雷达',
     options: {},
     stopped: false,
     timeout: null,
@@ -33,7 +33,6 @@ export default {
           trigger: 'item',
           // formatter: '{b} : {c}',
           formatter(data) {
-              console.log(data)
             if (data.seriesIndex === 0) {
                 let rez = '直播间:' + data.name + '<br>' + '同传人数:' + data.value
                 // console.log(data.seriesIndex)
@@ -90,7 +89,6 @@ export default {
         const pie = this.$refs.monitor;
         if (typeof this.options.series != "undefined") {
           const dataLen = this.options.series[0].data.length;
-          // console.log(dataLen);
           pie.dispatchAction({
             type: 'downplay',
             seriesIndex: 0,
