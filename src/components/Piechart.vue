@@ -24,7 +24,7 @@ export default {
 
   created() {
     this.once = true
-    this.url = `http://47.240.116.247:5000/processjson?uid=${this.$route.params.uid}&chart_type=pie`
+    this.url = `/processjson?uid=${this.$route.params.uid}&chart_type=pie`
   },
 
   watch: {
