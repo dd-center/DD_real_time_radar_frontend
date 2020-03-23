@@ -34,22 +34,23 @@ export default {
         //     console.log(data)
         //   }
         // },
-          radar: {
-        name: {
+        radar: {
+          name: {
             textStyle: {
-                color: '#fff',
-                backgroundColor: '#999',
-                borderRadius: 3,
-                padding: [3, 5]
+              color: '#fff',
+              backgroundColor: '#999',
+              borderRadius: 3,
+              padding: [3, 5]
             }
+          },
+          indicator: value.indicator,
         },
-        indicator: value.indicator
-    }, series: [{
-        name: '同传替身能力值',
-        type: 'radar',
-        // areaStyle: {normal: {}},
-        data: value.data
-        }]
+        series: [{
+          name: '同传替身能力值',
+          type: 'radar',
+          // areaStyle: {normal: {}},
+          data: value.data,
+        }],
       }
     },
   },

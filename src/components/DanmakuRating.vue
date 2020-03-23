@@ -1,27 +1,20 @@
 <template>
-	<div class="danmaku-rating">
-    <p>TODO: 如果增加了其他字段可能会修改样式，不用表格。</p>
+	<div id="rating">
 		<meta name="referrer" content="no-referrer">
-		<table class="table">
-      <thead>
-        <tr>
-          <th>排名</th>
-          <th>头像</th>
-          <th>用户名</th>
-          <th>签名</th>
-          <th>同传总字数</th>
-        </tr>
-      </thead>
-			<tbody>
-				<tr v-for="(i, index) in data" :key="i.name" v-show="show">
-					<td>No.{{index + 1}}</td>
-					<td><img :src="i.face" alt="头像不可用"/></td>
-					<td><router-link :to="'user/' + i.uid">{{i.name}}</router-link></td>
-                    <td>{{i.sign}}</td>
-					<td>{{i.value}}</td>
-				</tr>
-			</tbody>
-		</table>
+    <p v-if="!data">正在获取排名数据……</p>
+    <div class="item" v-else v-for="(user, index) in data" :key="user.name">
+      <router-link class="avatar" :to="'user/' + user.uid">
+        <img width="128" height="128" :src="user.face" alt="头像"/>
+      </router-link>
+      <div class="detail">
+        <p class="title">
+          <span class="rank">No.{{ index + 1 }}</span>&nbsp;
+          <span class="name">{{ user.name }}</span>&nbsp;
+        </p>
+        <p class="value">同传总字数：{{ user.value }}</p>
+        <p class="desc">{{ user.sign }}</p>
+      </div>
+    </div>
 	</div>
 </template>
 <script>
@@ -32,7 +25,6 @@ export default {
   mixins: [mixin],
 
   data: () => ({
-    show: true,
   }),
 
   created() {
@@ -42,24 +34,48 @@ export default {
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
-table {
-  margin: 2rem auto;
+#rating {
   max-width: 960px;
-  width: 100%;
-  border-collapse: collapse;
-}
+  margin: 0 auto;
+  padding: 0 2rem;
 
-th, td {
-  padding: 0.6em 1em;
-}
+  .item {
+    position: relative;
+    margin-bottom: 2rem;
+  }
 
-tr {
-  border: 1px solid #dfe2e5;
+  .avatar {
+    left: 0;
+    height: 128px;
+    position: absolute;
 
-  tbody &:nth-child(odd) {
-    background-color: #f6f8fa;
+    img {
+      border-radius: 12px;
+      box-shadow: 1px 1px 4px #0000003F;
+      transition: 0.3s ease;
+
+      &:hover {
+        box-shadow: 1px 1px 8px #0000003F;
+      }
+    }
+  }
+
+  .detail {
+    text-align: left;
+    min-height: 128px;
+    padding-left: 192px;
+
+    .title {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    p {
+      margin: 0.5rem 0;
+      line-height: 1.6;
+    }
   }
 }
 
