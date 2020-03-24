@@ -1,6 +1,6 @@
 <template>
   <div class="card profile">
-    <h2 class="title">TODO: 这里缺名字</h2>
+    <h2 class="title">{{data.nick_name}}</h2>
     <div class="content">
       <p type="tag info">排名：{{ data.current_rank }}</p>
       <p type="tag info">总字数：{{ data.danmaku_counts }}</p>
