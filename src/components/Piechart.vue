@@ -24,7 +24,7 @@ export default {
 
   created() {
     this.once = true
-    this.url = `https://api.huolonglive.com/processjson?uid=${this.$route.params.uid}&chart_type=pie`
+    this.url = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=pie`
   },
 
   watch: {

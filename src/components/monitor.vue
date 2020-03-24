@@ -23,7 +23,7 @@ export default {
   }),
 
   created() {
-    this.url = `https://api.huolonglive.com/processjson?uid=000000&chart_type=monitor`
+    this.url = `http://localhost:5000/processjson?uid=000000&chart_type=monitor`
   },
 
   watch: {
