@@ -1,19 +1,10 @@
 <template>
     <div class="container">
         <b-row  class="justify-content-md-center">
-
             <b-col lg="2"><b-button pill variant="warning" v-b-popover.hover.bottomleft="Rules">排行规则</b-button></b-col>
-            <b-col lg="2"><b-button pill variant="primary" v-b-popover.hover.bottom="repo">Github</b-button></b-col>
             <b-col lg="2"><b-button pill variant="dark" v-b-popover.hover.bottomright="contribute">参与人员</b-button></b-col>
+            <b-col lg="2"><b-button pill variant="primary" v-b-popover.hover.bottom="repo">Github</b-button></b-col>
         </b-row>
-<!--        -->
-<!--&lt;!&ndash;        <b-button v-b-popover.hover="popoverConfig" variant="success">Config Object</b-button>&ndash;&gt;-->
-<!--        <b-badge pill variant="danger">Danger</b-badge>-->
-<!--        <b-badge pill variant="warning">Warning</b-badge>-->
-<!--        <b-badge pill variant="info">Info</b-badge>-->
-<!--        <b-badge pill variant="light">Light</b-badge>-->
-<!--        <b-badge pill variant="dark">Dark</b-badge>-->
-
         <div class="level">
             <monitor-chart/>
             <danmaku-rating class="level-item has-text-centered"></danmaku-rating>
@@ -90,9 +81,8 @@
                   + '网页安全：无敌飞雪<br>'
                   + '弹幕监听：Kinori, Simon<br>'
                   + '前端技术顾问：shugen, H4M5TER<br>'
-                  + '美术设计：殿子<br>'
-                  + '* 特别感谢无敌飞雪提供的域名' +
-                '</span>'
+                  + '美术设计：殿子<br>' + '</span>' +
+                  + '<span  style="color:red">* 特别感谢无敌飞雪提供的域名</span>'
               }
             }
           }
