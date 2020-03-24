@@ -7,12 +7,37 @@
         <img width="128" height="128" :src="user.face" alt="头像"/>
       </router-link>
       <div class="detail">
-        <p class="title">
-          <span class="rank">No.{{ index + 1 }}</span>&nbsp;
-          <span class="name">{{ user.name }}</span>&nbsp;
-        </p>
+          <div v-if="index + 1 === 1">
+              <p class="title" style="color:gold">
+                  <span class="rank">No.{{ index + 1 }}</span>&nbsp;
+                  <span class="name">{{ user.name }}</span>&nbsp;
+              </p>
+          </div>
+          <div v-else-if="index + 1 === 2">
+              <p class="title" style="color:mediumpurple">
+                  <span class="rank">No.{{ index + 1 }}</span>&nbsp;
+                  <span class="name">{{ user.name }}</span>&nbsp;
+              </p>
+          </div>
+          <div v-else-if="index + 1 === 3">
+              <p class="title" style="color:deepskyblue">
+                  <span class="rank">No.{{ index + 1 }}</span>&nbsp;
+                  <span class="name">{{ user.name }}</span>&nbsp;
+              </p>
+          </div>
+          <div v-else>
+              <p class="title" style="color:black">
+                  <span class="rank">No.{{ index + 1 }}</span>&nbsp;
+                  <span class="name">{{ user.name }}</span>&nbsp;
+              </p>
+          </div>
         <p class="value">同传总字数：{{ user.value }}</p>
-        <p class="desc">{{ user.sign }}</p>
+        <div v-if="user.uid === 4515283">
+              <p class="desc">不灭黑焰第三队第IX任现任队长BLACK SIDE</p>
+        </div>
+        <div v-else>
+              <p class="desc">{{ user.sign }}</p>
+        </div>
       </div>
     </div>
 	</div>
@@ -28,7 +53,7 @@ export default {
   }),
 
   created() {
-    this.url = `http://47.240.116.247:5000/processjson?uid=000000&chart_type=ladder`
+    this.url = `https://api.huolonglive.com/processjson?uid=000000&chart_type=ladder`
   },
 }
 
@@ -43,11 +68,14 @@ export default {
 
   .item {
     position: relative;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ebeef5;
+    padding: 15px;
+    border-radius: 10px;
   }
 
   .avatar {
-    left: 0;
+    left: 8px;
     height: 128px;
     position: absolute;
 

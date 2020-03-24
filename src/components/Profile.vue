@@ -26,7 +26,7 @@ export default {
   },
 
   created() {
-    this.url = `http://47.240.116.247:5000/processjson?uid=${this.$route.params.uid}&chart_type=man_status`;
+    this.url = `https://api.huolonglive.com/processjson?uid=${this.$route.params.uid}&chart_type=man_status`;
   },
 }
 
@@ -36,10 +36,12 @@ export default {
 
 .profile {
   .content {
-    height: 400px;
     text-align: left;
     position: relative;
-    padding: 0 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   img {

@@ -4,7 +4,29 @@ body {
 
 .card {
   display: inline-block;
-  width: 600px;
+  align-items: center;
+  max-width: 1000px;
+  border: 1px solid #ebeef5;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: 0.3s ease;
+  margin: 2rem 2rem;
+
+  &:hover {
+    box-shadow: 1px 1px 12px 0 #0000001F;
+  }
+
+  h2 {
+    padding: 2rem 2.25rem;
+    margin: 0;
+    border-bottom: 1px solid #ebeef5;
+    box-sizing: border-box;
+  }
+}
+
+.monitor_card {
+  display: inline-block;
+  max-width: 1000px;
   border: 1px solid #ebeef5;
   border-radius: 6px;
   overflow: hidden;

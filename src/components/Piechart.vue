@@ -24,7 +24,7 @@ export default {
 
   created() {
     this.once = true
-    this.url = `http://47.240.116.247:5000/processjson?uid=${this.$route.params.uid}&chart_type=pie`
+    this.url = `https://api.huolonglive.com/processjson?uid=${this.$route.params.uid}&chart_type=pie`
   },
 
   watch: {
@@ -78,7 +78,7 @@ export default {
         this.timeout = setTimeout(this.highlight, 1000)
         }
         catch (error) {
-        console.error(error);
+        // console.error(error);
         if (this.stopped) return;
         this.timeout = setTimeout(this.highlight, 1000)
       }

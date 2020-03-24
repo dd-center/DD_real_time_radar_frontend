@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="monitor_card">
     <h2 class="title">{{ title }}</h2>
     <chart ref="monitor" :options="options" :auto-resize="true"></chart>
   </div>
@@ -23,7 +23,7 @@ export default {
   }),
 
   created() {
-    this.url = `http://47.240.116.247:5000/processjson?uid=000000&chart_type=monitor`
+    this.url = `https://api.huolonglive.com/processjson?uid=000000&chart_type=monitor`
   },
 
   watch: {
@@ -34,12 +34,12 @@ export default {
           // formatter: '{b} : {c}',
           formatter(data) {
             if (data.seriesIndex === 0) {
-                let rez = '直播间:' + data.name + '<br>' + '同传人数:' + data.value
+                let rez = '直播间:' + data.name + '<br>' + '同传人数:' + data.value + '人'
                 // console.log(data.seriesIndex)
                 return rez
               }
             else{
-                let rez = '同传man:' + data.name + '<br>' + '同传时间:' + data.value
+                let rez = '同传man:' + data.name + '<br>' + '同传时间:' + data.value + '分钟'
                 // console.log(data.seriesIndex)
                 return rez
             }
@@ -111,7 +111,7 @@ export default {
         this.timeout = setTimeout(this.highlight, 1000)
         }
         catch (error) {
-        console.error(error);
+        // console.error(error);
         if (this.stopped) return;
         this.timeout = setTimeout(this.highlight, 1000)
       }
