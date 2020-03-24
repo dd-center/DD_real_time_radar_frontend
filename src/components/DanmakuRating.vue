@@ -8,7 +8,7 @@
       </router-link>
       <div class="detail">
           <div v-if="index + 1 === 1">
-              <p class="title" style="color:gold">
+              <p class="title" style="color:goldenrod">
                   <span class="rank">No.{{ index + 1 }}</span>&nbsp;
                   <span class="name">{{ user.name }}</span>&nbsp;
               </p>
@@ -20,7 +20,7 @@
               </p>
           </div>
           <div v-else-if="index + 1 === 3">
-              <p class="title" style="color:deepskyblue">
+              <p class="title" style="color:blue">
                   <span class="rank">No.{{ index + 1 }}</span>&nbsp;
                   <span class="name">{{ user.name }}</span>&nbsp;
               </p>
