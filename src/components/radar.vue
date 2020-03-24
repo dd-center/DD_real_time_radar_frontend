@@ -28,12 +28,12 @@ export default {
   watch: {
     data(value) {
       this.options = {
-        // tooltip: {
-        //   trigger: 'item',
-        //   formatter(data) {
-        //     console.log(data)
-        //   }
-        // },
+        tooltip: {
+          trigger: 'item',
+          formatter(data) {
+            console.log(data)
+          }
+        },
         radar: {
           name: {
             textStyle: {

@@ -81,8 +81,8 @@
                   + '网页安全：无敌飞雪<br>'
                   + '弹幕监听：Kinori, Simon<br>'
                   + '前端技术顾问：shugen, H4M5TER<br>'
-                  + '美术设计：殿子<br>' + '</span>' +
-                  + '<span  style="color:red">* 特别感谢无敌飞雪提供的域名</span>'
+                  + '美术设计：殿子' + '</span><br>'
+                  + '<span  style="color:red">' + '* 特别感谢无敌飞雪提供的域名' + '</span>'
               }
             }
           }
