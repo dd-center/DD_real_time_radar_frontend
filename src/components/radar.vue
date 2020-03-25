@@ -38,7 +38,7 @@ export default {
 
   created() {
     // this.once = true
-    this.url = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=radar`
+    this.url = `http://47.240.116.247:5000/processjson?uid=${this.$route.params.uid}&chart_type=radar`
   },
 
   watch: {
@@ -51,14 +51,14 @@ export default {
             value.indicator.forEach((data_value) => {
                 ability_value.push(data_value.name.charAt(data_value.name.length-1))
             });
-            console.log(ability_value);
+            // console.log(ability_value);
             return '能力说明' + '<br>'
-                    + '破坏力 ' + ability_value[0] + ':' +story[0][ability_value[0]] +'<br>'
-                    + '持续力 ' + ability_value[1] + ':' +story[1][ability_value[1]] +'<br>'
-                    + '精密动作性 ' + ability_value[2] +':' +story[2][ability_value[2]] +'<br>'
-                    + '射程距离 ' + ability_value[3] +':' +story[3][ability_value[3]] +'<br>'
-                    + '速度 ' + ability_value[4] +':' +story[4][ability_value[4]] +'<br>'
-                    + '成长性 ' + ability_value[5] +':' +story[5][ability_value[5]] +'<br>'
+                    + '破坏力 ' + ability_value[0] + ': ' +story[0][ability_value[0]] +'<br>'
+                    + '持续力 ' + ability_value[1] + ': ' +story[1][ability_value[1]] +'<br>'
+                    + '精密动作性 ' + ability_value[2] +': ' +story[2][ability_value[2]] +'<br>'
+                    + '射程距离 ' + ability_value[3] +': ' +story[3][ability_value[3]] +'<br>'
+                    + '速度 ' + ability_value[4] +': ' +story[4][ability_value[4]] +'<br>'
+                    + '成长性 ' + ability_value[5] +': ' +story[5][ability_value[5]] +'<br>'
             // return value.indicator
           }
         },

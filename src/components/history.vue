@@ -13,7 +13,7 @@ export default {
 
   created() {
     this.once = true
-    this.url = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=message`
+    this.url = `http://47.240.116.247:5000/processjson?uid=${this.$route.params.uid}&chart_type=message`
   },
 
   watch: {
