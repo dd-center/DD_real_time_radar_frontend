@@ -38,6 +38,7 @@
             // Note this is called only when the popover is opened
             // return 'The date is:<br><em>' + new Date() + '</em>'
               return '<span  style="color:goldenrod">' +
+              '<span  style="color:red">' + '0.2月下旬和3月的数据更新，数据可能暂时不稳定' +  '</span>' + '<br>' +
               '1. 括号不计入同传总字数<br>' + '2. 单击头像以进入个人页面<br>' + '3. 雷达可以探测正在工作的同传man<br>' + '4.数据从19年5月开始计入，6/7月有数据缺失，8月后基本完整' + '</span>'
                     }
                 }

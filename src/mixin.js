@@ -12,7 +12,7 @@ export default {
         if (this.stopped || this.once) return
         this.timeout = setTimeout(this.update, 60000)
       } catch (error) {
-        console.error(error)
+        // console.error(error)
         if (this.stopped) return
         this.timeout = setTimeout(this.update, 60000)
       }

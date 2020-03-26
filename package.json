@@ -1,5 +1,5 @@
 {
-  "name": "dd_real_time_radar",
+  "name": "huolonglive",
   "analyz": "NODE_ENV=production npm_config_report=true npm run build",
   "version": "0.1.0",
   "private": true,
