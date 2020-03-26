@@ -26,7 +26,7 @@ export default {
   },
 
   created() {
-    this.url = `http://47.240.116.247:5000/processjson?uid=${this.$route.params.uid}&chart_type=man_status`;
+    this.url = `https://api.huolonglive.com/processjson?uid=${this.$route.params.uid}&chart_type=man_status`;
   },
 }
 

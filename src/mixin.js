@@ -10,11 +10,11 @@ export default {
         const { data } = await this.$axios.post(this.url)
         this.data = data.data
         if (this.stopped || this.once) return
-        this.timeout = setTimeout(this.update, 3000)
+        this.timeout = setTimeout(this.update, 60000)
       } catch (error) {
         console.error(error)
         if (this.stopped) return
-        this.timeout = setTimeout(this.update, 3000)
+        this.timeout = setTimeout(this.update, 60000)
       }
     },
   },
