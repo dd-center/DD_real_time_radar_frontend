@@ -3,7 +3,7 @@
 		<meta name="referrer" content="no-referrer">
     <p v-if="!data">正在获取排名数据……</p>
     <div class="item" v-else v-for="(user, index) in data" :key="user.name">
-      <router-link class="avatar" :to="'user/' + user.uid">
+      <router-link class="avatar" :to="'/' + user.uid">
         <img width="128" height="128" :src="user.face" alt="头像"/>
       </router-link>
       <div class="detail">

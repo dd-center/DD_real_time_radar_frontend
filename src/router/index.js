@@ -17,14 +17,13 @@ const routes = [
         component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue'),
     },
     {
-        path: '/user/:uid',
+        path: '/:uid',
         name: 'User',
         component: () => import(/* webpackChunkName: "user" */ '../views/User.vue'),
     },
 ]
 
 const router = new VueRouter({
-    mode: 'history',
     base: process.env.BASE_URL,
     routes
 })
