@@ -1,6 +1,20 @@
 <template>
   <div class="card profile">
     <h2 class="title">{{data.nick_name}}</h2>
+    <div class="icon">
+          <div v-if="data.danmaku_counts >= 1000000">
+              <img src="/golden.png">
+          </div>
+          <div v-else-if="data.danmaku_counts >= 100000">
+              <img src="/sliver.png">
+          </div>
+          <div v-else-if="data.danmaku_counts >= 10000">
+              <img src="/black_red.png">
+          </div>
+          <div v-else-if="data.danmaku_counts >= 1000">
+              <img src="/pink.png">
+          </div>
+      </div>
     <div class="content">
       <p type="tag info">排名：{{ data.current_rank }}</p>
       <p type="tag info">总字数：{{ data.danmaku_counts }}</p>
@@ -35,6 +49,12 @@ export default {
 <style lang="scss">
 
 .profile {
+  .icon {
+      right: 27px;
+      padding-top: 11px;
+      position: absolute;
+  }
+
   .content {
     text-align: left;
     position: relative;

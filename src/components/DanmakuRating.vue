@@ -6,6 +6,20 @@
       <router-link class="avatar" :to="'/' + user.uid">
         <img width="128" height="128" :src="user.face" alt="头像"/>
       </router-link>
+      <div class="icon">
+          <div v-if="user.value >= 1000000">
+              <img src="/golden.png">
+          </div>
+          <div v-else-if="user.value >= 100000">
+              <img src="/sliver.png">
+          </div>
+          <div v-else-if="user.value >= 10000">
+              <img src="/black_red.png">
+          </div>
+          <div v-else-if="user.value >= 1000">
+              <img src="/pink.png">
+          </div>
+      </div>
       <div class="detail">
           <div v-if="index + 1 === 1">
               <p class="title" style="color:goldenrod">
@@ -88,6 +102,11 @@ export default {
         box-shadow: 1px 1px 8px #0000003F;
       }
     }
+  }
+  .icon {
+      right: 27px;
+      padding-top: 11px;
+      position: absolute;
   }
 
   .detail {
