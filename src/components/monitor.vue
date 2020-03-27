@@ -12,6 +12,8 @@ import 'echarts/lib/component/legend'; //引入图例组件
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/chart/pie';
 let dataIndex = -1;
+let new_dataIndex = -1; // record the new position
+let delay_time = 1000; // specific delay
 export default {
   mixins: [mixin],
 
@@ -34,11 +36,17 @@ export default {
           // formatter: '{b} : {c}',
           formatter(data) {
             if (data.seriesIndex === 0) {
+
+                if (data.dataIndex !== dataIndex){
+                    new_dataIndex = data.dataIndex; // record the mouse position
+                    delay_time = 2000; // if the mouse put in the pie chart, change delay here
+                }
                 let rez = '直播间:' + data.name + '<br>' + '同传人数:' + data.value + '人'
                 // console.log(data.seriesIndex)
                 return rez
               }
             else{
+                delay_time = 2000;
                 let rez = '同传man:' + data.name + '<br>' + '同传时间:' + data.value + '分钟'
                 // console.log(data.seriesIndex)
                 return rez
@@ -94,26 +102,36 @@ export default {
             seriesIndex: 0,
             dataIndex
           });
-          dataIndex = (dataIndex + 1) % dataLen;
-          pie.dispatchAction({
-            type: 'highlight',
-            seriesIndex: 0,
-            dataIndex
-          });
-          // 显示 tooltip
-          // pie.dispatchAction({
-          //   type: 'showTip',
-          //   seriesIndex: 0,
-          //   dataIndex
-          // });
+          if (delay_time===1000){
+            dataIndex = (dataIndex + 1) % dataLen;
+            pie.dispatchAction({
+              type: 'highlight',
+              seriesIndex: 0,
+              dataIndex
+            });
+            // 显示 tooltip
+            pie.dispatchAction({
+              type: 'showTip',
+              seriesIndex: 0,
+              dataIndex
+            });
+          }
         }
         if (this.stopped) return;
-        this.timeout = setTimeout(this.highlight, 1000)
+        this.timeout = setTimeout(this.highlight, delay_time);
+        if(delay_time !== 1000){
+            dataIndex = new_dataIndex;
+            delay_time = 1000;
+          }
         }
         catch (error) {
         // console.error(error);
         if (this.stopped) return;
-        this.timeout = setTimeout(this.highlight, 1000)
+        this.timeout = setTimeout(this.highlight, delay_time);
+        if(delay_time !== 1000){
+          dataIndex = new_dataIndex;
+          delay_time = 1000;
+        }
       }
     },
   },
