@@ -3,20 +3,42 @@ body {
 }
 
 .card {
-  display: block;
-  max-width: 600px;
+  display: inline-block;
+  align-items: center;
+  max-width: 1000px;
   border: 1px solid #ebeef5;
   border-radius: 6px;
   overflow: hidden;
   transition: 0.3s ease;
-  margin: 2rem auto;
+  margin: 2rem 2rem;
 
   &:hover {
-    box-shadow: 0 2px 12px 0 #0000001F;
+    box-shadow: 1px 1px 12px 0 #0000001F;
   }
 
   h2 {
-    padding: 18px 20px;
+    padding: 2rem 2.25rem;
+    margin: 0;
+    border-bottom: 1px solid #ebeef5;
+    box-sizing: border-box;
+  }
+}
+
+.monitor_card {
+  display: inline-block;
+  max-width: 1000px;
+  border: 1px solid #ebeef5;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: 0.3s ease;
+  margin: 2rem 2rem;
+
+  &:hover {
+    box-shadow: 1px 1px 12px 0 #0000001F;
+  }
+
+  h2 {
+    padding: 1rem 1.25rem;
     margin: 0;
     border-bottom: 1px solid #ebeef5;
     box-sizing: border-box;
