@@ -8,7 +8,7 @@
         </b-row>
         <div class="level">
             <monitor-chart/>
-            <danmaku-rating class="level-item has-text-centered"></danmaku-rating>
+            <danmaku-rating/>
         </div>
     </div>
 </template>

@@ -21,49 +21,35 @@
           </div>
       </div>
       <div class="detail">
-          <div v-if="index + 1 === 1">
-              <p class="title" style="color:goldenrod">
-                  <span class="rank">No.{{ index + 1 }}</span>&nbsp;
-                  <span class="name">{{ user.name }}</span>&nbsp;
-              </p>
-          </div>
-          <div v-else-if="index + 1 === 2">
-              <p class="title" style="color:mediumpurple">
-                  <span class="rank">No.{{ index + 1 }}</span>&nbsp;
-                  <span class="name">{{ user.name }}</span>&nbsp;
-              </p>
-          </div>
-          <div v-else-if="index + 1 === 3">
-              <p class="title" style="color:blue">
-                  <span class="rank">No.{{ index + 1 }}</span>&nbsp;
-                  <span class="name">{{ user.name }}</span>&nbsp;
-              </p>
-          </div>
-          <div v-else>
-              <p class="title" style="color:black">
-                  <span class="rank">No.{{ index + 1 }}</span>&nbsp;
-                  <span class="name">{{ user.name }}</span>&nbsp;
-              </p>
-          </div>
+        <p class="title" :style="{ color: colors[index] || null }">
+          <span class="rank">No.{{ index + 1 }}</span>&nbsp;
+          <span class="name">{{ user.name }}</span>&nbsp;
+        </p>
         <p class="value">同传总字数：{{ user.value }}</p>
-        <div v-if="user.uid === 4515283">
-              <p class="desc">不灭黑焰第三队第IX任现任队长BLACK SIDE</p>
-        </div>
-        <div v-else>
-              <p class="desc">{{ user.sign }}</p>
-        </div>
+        <p v-if="user.uid === 4515283" class="desc">
+          不灭黑焰第三队第IX任现任队长BLACK SIDE
+        </p>
+        <p v-else class="desc">{{ user.sign }}</p>
       </div>
     </div>
 	</div>
 </template>
+
 <script>
 
 import mixin from '../mixin'
+
+const colors = [
+  'goldenrod',
+  'mediumpurple',
+  'blue',
+]
 
 export default {
   mixins: [mixin],
 
   data: () => ({
+    colors,
   }),
 
   created() {
@@ -78,41 +64,48 @@ export default {
 #rating {
   max-width: 960px;
   margin: 0 auto;
-  padding: 0 2rem;
 
   .item {
     position: relative;
-    margin-bottom: 1rem;
-    border: 1px solid #ebeef5;
-    padding: 15px;
+    padding: 1rem;
     border-radius: 10px;
+    transition: 0.3s ease;
+    box-shadow: 1px 1px 4px #0000;
+
+    &:hover {
+      box-shadow: 1px 1px 4px #0000005F;
+    }
   }
 
   .avatar {
-    left: 8px;
+    left: 1rem;
     height: 128px;
     position: absolute;
 
     img {
       border-radius: 12px;
-      box-shadow: 1px 1px 4px #0000003F;
+      box-shadow: 1px 1px 4px #0000005F;
       transition: 0.3s ease;
 
       &:hover {
-        box-shadow: 1px 1px 8px #0000003F;
+        box-shadow: 1px 1px 8px #0000005F;
       }
     }
   }
+
   .icon {
-      right: 27px;
-      padding-top: 11px;
-      position: absolute;
+    right: 27px;
+    position: absolute;
   }
 
   .detail {
     text-align: left;
     min-height: 128px;
-    padding-left: 192px;
+    padding-left: 9rem;
+
+    @media (min-width: 720px) {
+      padding-left: 11rem;
+    }
 
     .title {
       font-weight: bold;
@@ -122,6 +115,14 @@ export default {
     p {
       margin: 0.5rem 0;
       line-height: 1.6;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 }

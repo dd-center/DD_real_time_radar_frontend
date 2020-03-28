@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "bootstrap-vue": "^2.9.0",
     "bulma": "^0.8.0",
     "core-js": "^3.6.4",
     "echarts": "^4.6.0",
