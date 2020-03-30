@@ -1,7 +1,7 @@
 <template>
   <div class="monitor_card">
     <h2 class="title">{{ title }}</h2>
-    <chart ref="monitor" :options="options" :auto-resize="true"></chart>
+    <chart ref="monitor" :options="options" :auto-resize="true" @click="onClick"></chart>
   </div>
 </template>
 
@@ -92,6 +92,19 @@ export default {
     },
   },
   methods: {
+    onClick(event) {
+        if (event.seriesIndex === 0) {
+          // inner
+          // console.log(this.data.room_id_mapping[event.name]);
+          window.location=`https://live.bilibili.com/${this.data.room_id_mapping[event.name]}`
+          // window.open(`https://live.bilibili.com/${this.data.room_id_mapping[event.name]}`, "_blank");
+        }
+        else{
+          // outer
+          // console.log(this.data.user_id_mapping[event.name])
+          window.open(`https://space.bilibili.com/${this.data.user_id_mapping[event.name]}`);
+        }
+      },
     highlight() {
       try {
         const pie = this.$refs.monitor;

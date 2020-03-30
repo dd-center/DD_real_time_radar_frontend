@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <h2 class="title">{{ title }}</h2>
-    <chart ref="pie" :options="options" :auto-resize="true"></chart>
+    <chart ref="pie" :options="options" :auto-resize="true" @click="onClick"></chart>
   </div>
 </template>
 
@@ -60,6 +60,13 @@ export default {
     },
   },
   methods: {
+    onClick(event) {
+        // console.log(event);
+        // console.log(this.data);
+        let room_id = this.data.roomid_list[event.dataIndex].roomid;
+        // console.log(room_id);
+        window.open(`https://live.bilibili.com/${room_id}`, "_blank");
+      },
     highlight() {
       try {
         const pie = this.$refs.pie;
