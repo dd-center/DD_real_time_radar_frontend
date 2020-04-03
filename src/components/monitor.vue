@@ -57,7 +57,7 @@ export default {
         {
             name: '直播间',
             type: 'pie',
-            selectedMode: 'single',
+            selectedMode: false,
             radius: [0, '40%'],
 
             itemStyle : {
@@ -96,8 +96,8 @@ export default {
         if (event.seriesIndex === 0) {
           // inner
           // console.log(this.data.room_id_mapping[event.name]);
-          window.location=`https://live.bilibili.com/${this.data.room_id_mapping[event.name]}`
-          // window.open(`https://live.bilibili.com/${this.data.room_id_mapping[event.name]}`, "_blank");
+          // window.location=`https://live.bilibili.com/${this.data.room_id_mapping[event.name]}`
+          window.open(`https://live.bilibili.com/${this.data.room_id_mapping[event.name]}`, "_blank");
         }
         else{
           // outer
