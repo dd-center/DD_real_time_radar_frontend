@@ -134,15 +134,3 @@
         }
     }
 </script>
-
-<style type="text/css">
-html {
-    filter:grayscale(100%);
-    -webkit-filter:grayscale(100%);
-    -moz-filter:grayscale(100%);
-    -ms-filter:grayscale(100%);
-    -o-filter:grayscale(100%);
-    filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
-    -webkit-filter:grayscale(1)
-}
-</style>
