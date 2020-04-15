@@ -7,19 +7,29 @@
         <img width="128" height="128" :src="user.face" alt="头像"/>
       </router-link>
       <div class="icon">
-          <div v-if="user.value >= 1000000">
-              <img src="/golden.png" id="tooltip-button-variant">
-          </div>
-          <div v-else-if="user.value >= 100000">
-              <img src="/sliver.png">
-          </div>
-          <div v-else-if="user.value >= 10000">
-              <img src="/black_red.png">
-          </div>
-          <div v-else-if="user.value >= 1000">
-              <img src="/pink.png">
-          </div>
-          <b-tooltip target="tooltip-button-variant" variant="danger">Danger variant tooltip</b-tooltip>
+          <b-container>
+          <b-row class="row no-gutters">
+            <b-col class="inner"><img src="/golden.png" id="tooltip-button-variant"></b-col>
+            <b-col class="inner"><img src="/sliver.png" id="tooltip-button-variant2"></b-col>
+            <b-col class="inner"><img src="/black_red.png" id="tooltip-button-variant3"></b-col>
+            <b-col class="inner"><img src="/pink.png" id="tooltip-button-variant4"></b-col>
+            <b-col class="inner"><img src="/convert.png" id="tooltip-button-variant5"></b-col>
+          </b-row>
+        </b-container>
+
+<!--          <div v-if="user.value >= 1000000">-->
+<!--              <img src="/golden.png" id="tooltip-button-variant3">-->
+<!--          </div>-->
+<!--          <div v-else-if="user.value >= 100000">-->
+<!--              <img src="/sliver.png">-->
+<!--          </div>-->
+<!--          <div v-else-if="user.value >= 10000">-->
+<!--              <img src="/black_red.png">-->
+<!--          </div>-->
+<!--          <div v-else-if="user.value >= 1000">-->
+<!--              <img src="/pink.png">-->
+<!--          </div>-->
+          <b-tooltip target="tooltip-button-variant" variant="danger" triggers="hover">Danger variant tooltip</b-tooltip>
       </div>
       <div class="detail">
         <p class="title" :style="{ color: colors[index] || null }">
@@ -95,8 +105,12 @@ export default {
   }
 
   .icon {
-    right: 27px;
+    right: 1px;
     position: absolute;
+
+    .inner {
+        margin: 2px; // Or whatever you want your spacing to be
+    }
   }
 
   .detail {
