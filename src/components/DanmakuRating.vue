@@ -8,7 +8,7 @@
       </router-link>
       <div class="icon">
           <div v-if="user.value >= 1000000">
-              <img src="/golden.png">
+              <img src="/golden.png" id="tooltip-button-variant">
           </div>
           <div v-else-if="user.value >= 100000">
               <img src="/sliver.png">
@@ -19,6 +19,7 @@
           <div v-else-if="user.value >= 1000">
               <img src="/pink.png">
           </div>
+          <b-tooltip target="tooltip-button-variant" variant="danger">Danger variant tooltip</b-tooltip>
       </div>
       <div class="detail">
         <p class="title" :style="{ color: colors[index] || null }">
