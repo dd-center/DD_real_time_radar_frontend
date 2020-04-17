@@ -7,26 +7,11 @@
         id="Room id"
       >
         <template v-slot:first>
-          <option value="">-- hololive --</option>
+          <option value="">-- 请选择直播间 --</option>
         </template>
       </b-form-select>
     </b-form-group>
-
-    <b-form-group label="Time Variant" label-for="Time id" label-cols-lg="2">
-      <b-form-select
-        v-model="time_id_value"
-        :options="time_option"
-        id="Time id"
-      >
-        <template v-slot:first>
-          <option value="">-- Time --</option>
-        </template>
-      </b-form-select>
-    </b-form-group>
-
-    <div class="mt-3">Selected: <strong>{{ room_id_value[time_id_value] }}</strong></div>
-    <div class="mt-3">Selected: <strong>{{ time_id_value }}</strong></div>
-    <b-table sticky-header hover :items="room_id_value.a" :table-variant="room_id_value" class="text-left"></b-table>
+    <b-table sticky-header hover :items="items[room_id_value]" class="text-left"></b-table>
   </div>
 </template>
 
@@ -38,9 +23,7 @@ import mixin from '../mixin'
     data: () => ({
       items: [{ heading1: '加载中', heading2: '加载中', heading3: '加载中' }],
       room_option: [],
-      time_option: [],
-      room_id_value: 'hololive',
-      time_id_value: 'a'
+      room_id_value: 'hololive'
     }),
     created() {
       // this.once = true
@@ -49,23 +32,9 @@ import mixin from '../mixin'
     watch: {
     data(value) {
       console.log(value.data[this.room_id_value]);
-      this.items = value.data[this.room_id_value],
-      this.room_option = [
-          // { value: null, text: 'Please select an option' },
-          { value:
-                    {
-                      'a': [{ age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-                              { age: 21, first_name: 'Larsen', last_name: 'Shaw' },],
-                      'b': [{ age: 89, first_name: 'Geneva', last_name: 'Wilson' },
-                            { age: 38, first_name: 'Jami', last_name: 'Carney' }]
-                    }, text: 'This is First option' },
-          ],
-      this.room_id_value = 'hololive',
-      this.time_option = [
-          { value: 'a', text: 'Please select an option' },
-          { value: 'b', text: 'Selected Option' }
-        ],
-      this.time_id_value = 'a'
+      this.items = value.data,
+      this.room_option = value.roomid_list,
+      this.room_id_value = 'hololive'
     },
   }
   }
