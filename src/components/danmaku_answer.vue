@@ -1,6 +1,6 @@
 <template>
-  <div class="card">
-    <b-form-group label="Room Variant" label-for="Room id">
+  <div class="card_danmaku">
+    <b-form-group label="Room Variant" label-for="Room id" label-cols-lg="2">
       <b-form-select
         v-model="room_id_value"
         :options="room_option"
@@ -11,7 +11,7 @@
         </template>
       </b-form-select>
     </b-form-group>
-    <b-table hover :items="items" :table-variant="room_id_value"></b-table>
+    <b-table sticky-header hover :items="items" :table-variant="room_id_value"></b-table>
   </div>
 </template>
 
