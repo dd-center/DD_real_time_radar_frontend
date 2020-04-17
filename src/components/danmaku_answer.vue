@@ -8,9 +8,6 @@
         id="Room id"
         @change="change_room"
       >
-        <template v-slot:first>
-          <option value="">-- 请选择直播间 --</option>
-        </template>
       </b-form-select>
     </b-form-group>
 
@@ -20,9 +17,6 @@
         :options="items[room_id_value]['time_select']"
         id="Time id"
       >
-        <template v-slot:first>
-          <option value="">-- 请选择时间段 --</option>
-        </template>
       </b-form-select>
     </b-form-group>
     <b-table sticky-header hover :items="items[room_id_value][time_id_value]" class="text-left" style="width: 54rem"></b-table>
@@ -35,11 +29,10 @@ import mixin from '../mixin'
   export default {
     mixins: [mixin],
     data: () => ({
-      items: [],
-      room_option: [],
-      room_id_value: 'hololive',
-      // time_option: [],
-      time_id_value: '早期数据'
+      items: {'-- 选择直播间以检视同传弹幕 --':{"time_select": ["-- 选择时间以检视同传弹幕 --"]}},
+      room_option: ['-- 选择直播间以检视同传弹幕 --'],
+      room_id_value: '-- 选择直播间以检视同传弹幕 --',
+      time_id_value: '-- 选择时间以检视同传弹幕 --'
     }),
     created() {
       // this.once = true
@@ -47,16 +40,19 @@ import mixin from '../mixin'
     },
     watch: {
     data(value) {
-      console.log(value.data[this.room_id_value]);
-      this.items = value.data,
-      this.room_option = value.roomid_list,
-      this.room_id_value = this.room_option[0],
+      this.items = value.data;
+      this.items["-- 选择直播间以检视同传弹幕 --"] = {
+            "time_select": ["-- 选择时间以检视同传弹幕 --"]
+        };
+      this.room_option = value.roomid_list;
+      this.room_option.push("-- 选择直播间以检视同传弹幕 --");
+      this.room_id_value = this.room_option[this.room_option.length-1];
       this.time_id_value = this.items[this.room_id_value]['time_select'][0]
     },
   },
   methods: {
           change_room(value) {
-            console.log(value);
+            'refresh the time value at here'
             this.time_id_value = this.items[value]['time_select'][0]
         }
    }
