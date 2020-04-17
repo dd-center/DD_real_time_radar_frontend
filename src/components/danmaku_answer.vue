@@ -11,7 +11,7 @@
         </template>
       </b-form-select>
     </b-form-group>
-    <b-table sticky-header hover :items="items" :table-variant="room_id_value"></b-table>
+    <b-table sticky-header hover :items="items" :table-variant="room_id_value" class="text-left"></b-table>
   </div>
 </template>
 
@@ -24,7 +24,7 @@
           { heading1: 'table cell', heading2: 'table cell', heading3: 'table cell' },
           { heading1: 'table cell', heading2: 'table cell', heading3: 'table cell' },
           { heading1: 'table cell', heading2: 'table cell', heading3: 'table cell' },
-          { heading1: 'table cell', heading2: 'table cell', heading3: 'table cell' },
+          { heading1: 'table cell', heading2: 'table cell2222222222', heading3: 'table cell' },
           { heading1: 'table cell', heading2: 'table cell', heading3: 'table cell' },
           { heading1: 'table cell', heading2: 'table cell', heading3: 'table cell' },
           { heading1: 'table cell', heading2: 'table cell', heading3: 'table cell' },
