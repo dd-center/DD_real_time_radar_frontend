@@ -1,24 +1,31 @@
 <template>
-  <div class="card_danmaku">
+  <div class="card">
+         <b-container class="padding_part">
+          <b-row>
+            <b-col>
+              <b-form-group label-for="Room id">
+                <b-form-select
+                  v-model="room_id_value"
+                  :options="room_option"
+                  id="Room id"
+                  @change="change_room"
+                >
+                </b-form-select>
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group label-for="Time id">
+                <b-form-select
+                  v-model="time_id_value"
+                  :options="items[room_id_value]['time_select']"
+                  id="Time id"
+                >
+                </b-form-select>
+              </b-form-group>
+            </b-col>
+          </b-row>
+        </b-container>
 
-    <b-form-group label="直播间：" label-for="Room id" label-cols-lg="2">
-      <b-form-select
-        v-model="room_id_value"
-        :options="room_option"
-        id="Room id"
-        @change="change_room"
-      >
-      </b-form-select>
-    </b-form-group>
-
-    <b-form-group label="时间：" label-for="Time id" label-cols-lg="2">
-      <b-form-select
-        v-model="time_id_value"
-        :options="items[room_id_value]['time_select']"
-        id="Time id"
-      >
-      </b-form-select>
-    </b-form-group>
     <b-table sticky-header hover :items="items[room_id_value][time_id_value]" class="text-left" style="width: 54rem"></b-table>
   </div>
 </template>
