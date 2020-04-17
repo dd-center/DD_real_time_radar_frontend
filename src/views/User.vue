@@ -2,9 +2,9 @@
   <div class="container">
     <Profile/>
     <radar-chart/>
+    <danmaku-chart/>
     <line-chart/>
     <pie-chart/>
-    <danmaku-chart/>
   </div>
 </template>
 
