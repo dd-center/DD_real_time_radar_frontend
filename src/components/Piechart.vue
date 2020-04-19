@@ -28,8 +28,10 @@ export default {
     this.once = true
     this.url = `https://api.huolonglive.com/processjson?uid=${this.$route.params.uid}&chart_type=pie`
   },
+
   watch: {
     data(value) {
+      const data = value.pie_data.sort((a, b) => b.value - a.value)
       this.options = {
         tooltip: {
           trigger: 'item',
@@ -38,16 +40,15 @@ export default {
               new_dataIndex = data.dataIndex; // record the mouse position
               delay_time = 2000; // if the mouse put in the pie chart, change delay here
             }
-            let rez = '直播间:' + data.name + '<br>' + '同传弹幕数:' + data.value + '<br>' + '占比:' + data.percent + '%'
-            return rez
-
+            return '直播间:' + data.name + '<br>' + '同传弹幕数:' + data.value + '<br>' + '占比:' + data.percent + '%'
           }
         },
         series: [{
           name: '直播间：弹幕数（弹幕占比）',
           type: 'pie',
           radius: '55%',
-          data: value.pie_data,
+          data,
+          minShowLabelAngle: 3,
           itemStyle: {
             emphasis: {
               shadowBlur: 10,
