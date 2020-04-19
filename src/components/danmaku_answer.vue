@@ -27,7 +27,7 @@
           </b-row>
         </b-container>
 
-    <b-table sticky-header hover :items="items[room_id_value][time_id_value]" class="text-left" style="width: 54rem" :busy="isBusy">
+    <b-table sticky-header hover :items="items[room_id_value][time_id_value]" class="text-left" style="width: 48rem" :busy="isBusy">
         <template v-slot:table-busy>
         <div class="text-center text-dark my-2">
           <b-spinner class="align-middle"></b-spinner>

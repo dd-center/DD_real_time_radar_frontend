@@ -53,7 +53,7 @@
       danmaku_counter_2: 0,
       danmaku_counter_3: 0,
       danmaku_counter_4: 0,
-      description_list : ["完全胜利", "余裕", "理解理解", "牙白"]
+      description_list : ["完全胜利", "余裕余裕", "理解理解", "牙白呦"]
     }),
     created() {
       this.url = `https://api.huolonglive.com/processjson?uid=000000&chart_type=server`;
@@ -69,7 +69,7 @@
       this.danmaku_counter_2 = value[1]['recent danmaku'];
       this.danmaku_counter_3 = value[2]['recent danmaku'];
       this.danmaku_counter_4 = value[3]['recent danmaku'];
-      console.log(value);
+      // console.log(value);
       },
     },
     methods: {
