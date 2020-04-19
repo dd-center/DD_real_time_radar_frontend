@@ -94,6 +94,7 @@ export default {
     position: absolute;
 
     img {
+      position: absolute;
       border-radius: 12px;
       box-shadow: 1px 1px 4px #0000005F;
       transition: 0.3s ease;

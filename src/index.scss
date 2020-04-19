@@ -17,10 +17,26 @@ body {
   }
 
   h2 {
-    padding: 2rem 2.25rem;
+    font-weight: bold;
+    font-size: 1.4rem;
+    width: 100%;
+    padding: 1rem 0;
     margin: 0;
     border-bottom: 1px solid #ebeef5;
     box-sizing: border-box;
+  }
+
+  .footer {
+    text-align: left;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    margin: 0;
+    border-top: 1px solid #ebeef5;
+    box-sizing: border-box;
+    line-height: 1.6;
+    p {
+      margin: 0.2rem 0;
+    }
   }
 }
 
@@ -47,4 +63,10 @@ body {
     border-bottom: 1px solid #ebeef5;
     box-sizing: border-box;
   }
+}
+
+.echarts {
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
 }

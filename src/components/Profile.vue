@@ -1,6 +1,6 @@
 <template>
   <div class="card profile">
-    <h2 class="title">{{data.nick_name}}</h2>
+    <h2 class="title">{{ data.nick_name }}</h2>
     <div class="icon">
           <div v-if="data.danmaku_counts >= 1000000">
               <img src="/golden.png">
@@ -21,7 +21,7 @@
       <p type="tag info">当前状态：{{ data.is_working }}</p>
       <p type="tag info">个人空间：<a target="_blank" :href="space">{{ space }}</a></p>
       <p type="tag info">签名：{{ data.sign }}</p>
-      <img width="128" height="128" :src="data.face"/>
+      <img class="avatar" width="128" height="128" :src="data.face"/>
     </div>
   </div>
 </template>
@@ -50,9 +50,9 @@ export default {
 
 .profile {
   .icon {
-      right: 27px;
-      padding-top: 11px;
-      position: absolute;
+    right: 27px;
+    padding-top: 11px;
+    position: absolute;
   }
 
   .content {
@@ -64,17 +64,12 @@ export default {
     padding-bottom: 2rem;
   }
 
-  img {
+  img.avatar {
     position: absolute;
     top: 2rem;
     right: 2rem;
     border-radius: 12px;
     box-shadow: 1px 1px 4px #0000003F;
-  }
-
-  p:first-child {
-    margin-top: 0;
-    padding-top: 2rem;
   }
 }
 
