@@ -1,7 +1,10 @@
 <template>
   <div class="card">
     <h2 class="title">{{ title }}</h2>
-    <chart ref="radar" :options="options" :auto-resize="true"></chart>
+    <chart ref="radar" theme="light" :options="options" autoresize></chart>
+    <div class="footer">
+      <p v-for="(hint, index) in hints" :key="index">{{ hint }}</p>
+    </div>
   </div>
 </template>
 
@@ -41,28 +44,26 @@ export default {
     this.url = `https://api.huolonglive.com/processjson?uid=${this.$route.params.uid}&chart_type=radar`
   },
 
+  computed: {
+    hints () {
+      const ability_value = [];
+      this.data.indicator.forEach((data_value) => {
+        ability_value.push(data_value.name.charAt(data_value.name.length-1))
+      });
+      return [
+        '破坏力 ' + ability_value[0] + ': ' +story[0][ability_value[0]],
+        '持续力 E' + ability_value[1] + ': ' + '最长高强度连续同传了 ' + this.data.others.primary_value[1] + ' 小时，这发生在 ' + this.data.others.longest_date + ' 的 ' + this.data.others.longest_room,
+        '字长' + ability_value[2] +': ' + '同传弹幕的平均长度是 ' + this.data.others.primary_value[2],
+        '射程 ' + ability_value[3] +': ' + '你的DD指数是 ' + this.data.others.primary_value[3] + ' 它基本相当于你贡献了不少同传的房间数',
+        '肝 ' + ability_value[4] +': ' + '你的反摸鱼指数 ' + this.data.others.primary_value[4] + ' 与摸鱼的天数负相关',
+        '攻速 ' + ability_value[5] +': ' + '你在高强度同传时平均每分钟敲出 '+ this.data.others.primary_value[5] +' 个字',
+      ]
+    },
+  },
+
   watch: {
     data(value) {
       this.options = {
-        tooltip: {
-          trigger: 'item',
-          position: 'inside',
-          formatter() {
-            const ability_value = [];
-            value.indicator.forEach((data_value) => {
-                ability_value.push(data_value.name.charAt(data_value.name.length-1))
-            });
-            // console.log(ability_value);
-            return '能力说明' + '<br>'
-                    + '破坏力' + ability_value[0] + ': ' +story[0][ability_value[0]] +'<br>'
-                    + '持续力 E' + ability_value[1] + ': ' + '最长高强度连续同传了 ' + value.others.primary_value[1] + ' 小时，这发生在 ' + value.others.longest_date + ' 的 ' + value.others.longest_room +'<br>'
-                    + '字长' + ability_value[2] +': ' + '同传弹幕的平均长度是 ' + value.others.primary_value[2] +'<br>'
-                    + '射程 ' + ability_value[3] +': ' + '你的DD指数是 ' + value.others.primary_value[3] + ' 它基本相当于你贡献了不少同传的房间数'+ '<br>'
-                    + '肝 ' + ability_value[4] +': ' + '你的反摸鱼指数 ' + value.others.primary_value[4] + ' 与摸鱼的天数负相关' +'<br>'
-                    + '攻速 ' + ability_value[5] +': ' + '你在高强度同传时平均每分钟敲出 '+ value.others.primary_value[5] +' 个字'+'<br>'
-            // return value.indicator
-          }
-        },
         radar: {
           name: {
             textStyle: {

@@ -6,7 +6,7 @@
       <b-tab v-for="i in Object.keys(data)" :key="'dyn-tab-' + i" :title="i" v-on:click="onChange">
       </b-tab>
     </b-tabs>
-    <chart ref="chart1" :options="options" :auto-resize="true"></chart>
+    <chart :options="options" theme="light" autoresize></chart>
   </div>
 </template>
 
