@@ -1,7 +1,7 @@
 <template>
   <div class="monitor_card">
     <h2 class="title">{{ title }}</h2>
-    <chart ref="monitor" :options="options" :auto-resize="true" @click="onClick"></chart>
+    <chart ref="monitor" theme="light"  :options="options" :auto-resize="true" @click="onClick"></chart>
   </div>
 </template>
 

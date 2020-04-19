@@ -29,7 +29,7 @@
           <div v-else-if="user.value >= 1000">
               <img src="/pink.png">
           </div>
-          <b-tooltip target="tooltip-button-variant" variant="danger" triggers="hover">Danger variant tooltip</b-tooltip>
+<!--          <b-tooltip target="tooltip-button-variant"  triggers="hover">Danger variant tooltip</b-tooltip>-->
       </div>
       <div class="detail">
         <p class="title" :style="{ color: colors[index] || null }">
