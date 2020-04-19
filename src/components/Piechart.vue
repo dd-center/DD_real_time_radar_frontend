@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <h2 class="title">{{ title }}</h2>
-    <chart ref="pie" :options="options" autoresize @click="onClick"></chart>
+    <chart ref="pie" theme="light" :options="options" autoresize @click="onClick"></chart>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <h2 class="title">{{ title }}</h2>
-    <chart ref="radar" :options="options" autoresize></chart>
+    <chart ref="radar" theme="light" :options="options" autoresize></chart>
     <div class="footer">
       <p v-for="(hint, index) in hints" :key="index">{{ hint }}</p>
     </div>
