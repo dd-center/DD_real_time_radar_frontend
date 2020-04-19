@@ -1,5 +1,6 @@
 <template>
   <div class="card">
+         <h2 class="title">同传弹幕数据查询</h2>
          <b-container class="padding_part">
           <b-row>
             <b-col>
@@ -26,7 +27,15 @@
           </b-row>
         </b-container>
 
-    <b-table sticky-header hover :items="items[room_id_value][time_id_value]" class="text-left" style="width: 54rem"></b-table>
+    <b-table sticky-header hover :items="items[room_id_value][time_id_value]" class="text-left" style="width: 54rem" :busy="isBusy">
+        <template v-slot:table-busy>
+        <div class="text-center text-dark my-2">
+          <b-spinner class="align-middle"></b-spinner>
+          <strong> 加载中...</strong>
+        </div>
+      </template>
+    </b-table>
+
   </div>
 </template>
 
@@ -36,17 +45,20 @@ import mixin from '../mixin'
   export default {
     mixins: [mixin],
     data: () => ({
-      items: {'-- 选择直播间以检视同传弹幕 --':{"time_select": ["-- 选择时间以检视同传弹幕 --"]}},
-      room_option: ['-- 选择直播间以检视同传弹幕 --'],
-      room_id_value: '-- 选择直播间以检视同传弹幕 --',
-      time_id_value: '-- 选择时间以检视同传弹幕 --'
+      isBusy: true,
+      items: {'-- 加载中，请稍后 --':{"time_select": ["-- 加载中，请稍后 --"]}},
+      room_option: ['-- 加载中，请稍后 --'],
+      room_id_value: '-- 加载中，请稍后 --',
+      time_id_value: '-- 加载中，请稍后 --'
     }),
     created() {
-      // this.once = true
-      this.url = `http://localhost:5000/processjson?uid=${this.$route.params.uid}&chart_type=danmaku`;
+      this.once = true;
+      this.url = `https://api.huolonglive.com/processjson?uid=${this.$route.params.uid}&chart_type=danmaku`;
     },
     watch: {
     data(value) {
+      // console.log(value)
+      this.isBusy = false
       this.items = value.data;
       this.items["-- 选择直播间以检视同传弹幕 --"] = {
             "time_select": ["-- 选择时间以检视同传弹幕 --"]
