@@ -7,6 +7,7 @@
             <b-col lg="2"><b-button pill variant="primary" v-b-popover.hover.bottomright="repo">Github</b-button></b-col>
         </b-row>
         <div class="level">
+            <progress-chart/>
             <monitor-chart/>
             <danmaku-rating/>
         </div>
@@ -16,12 +17,13 @@
 <script>
     import 'bootstrap/dist/css/bootstrap.css'
     import 'bootstrap-vue/dist/bootstrap-vue.css'
+    const ProgressChart = () => import("../components/progress_bar");
     const DanmakuRating = () => import("../components/DanmakuRating")
     const MonitorChart = () => import("../components/monitor");
-
     export default {
         name: 'DataView',
         components: {
+            ProgressChart,
             DanmakuRating,
             MonitorChart,
         },
