@@ -1,13 +1,14 @@
 export default {
   data: () => ({
     data: [],
-    stopped: false,
+    stopped: true,
     timeout: null,
-    timeout_count: 60000
+    timeout_count: 1000
   }),
   methods: {
     async update() {
       try {
+        // console.log("update once");
         const { data } = await this.$axios.post(this.url)
         this.data = data.data
         if (this.stopped || this.once) return
