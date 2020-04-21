@@ -72,14 +72,61 @@
                 <div>{{this.danmaku_counter_8}}</div>
             </b-col>
           </b-row>
-        <b-tooltip target="overhead1" triggers="hover" placement="bottom"><strong> 服务器 1 </strong> <br> 负载：{{description_list[Math.floor(value_1/25)]}} <br> 正在监听：{{this.room_id_list_1}} <br> log：{{this.event_log_1}}</b-tooltip>
-        <b-tooltip target="overhead2" triggers="hover" placement="bottom"><strong> 服务器 2 </strong> <br> 负载：{{description_list[Math.floor(value_2/25)]}} <br> 正在监听：{{this.room_id_list_2}} <br> log：{{this.event_log_2}}</b-tooltip>
-        <b-tooltip target="overhead3" triggers="hover" placement="bottom"><strong> 服务器 3 </strong> <br> 负载：{{description_list[Math.floor(value_3/25)]}} <br> 正在监听：{{this.room_id_list_3}} <br> log：{{this.event_log_3}}</b-tooltip>
-        <b-tooltip target="overhead4" triggers="hover" placement="bottom"><strong> 服务器 4 </strong> <br> 负载：{{description_list[Math.floor(value_4/25)]}} <br> 正在监听：{{this.room_id_list_4}} <br> log：{{this.event_log_4}}</b-tooltip>
-        <b-tooltip target="overhead5" triggers="hover" placement="bottom"><strong> 服务器 5 </strong> <br> 负载：{{description_list[Math.floor(value_5/25)]}} <br> 正在监听：{{this.room_id_list_5}} <br> log：{{this.event_log_5}}</b-tooltip>
-        <b-tooltip target="overhead6" triggers="hover" placement="bottom"><strong> 服务器 6 </strong> <br> 负载：{{description_list[Math.floor(value_6/25)]}} <br> 正在监听：{{this.room_id_list_6}} <br> log：{{this.event_log_6}}</b-tooltip>
-        <b-tooltip target="overhead7" triggers="hover" placement="bottom"><strong> 服务器 7 </strong> <br> 负载：{{description_list[Math.floor(value_7/25)]}} <br> 正在监听：{{this.room_id_list_7}} <br> log：{{this.event_log_7}}</b-tooltip>
-        <b-tooltip target="overhead8" triggers="hover" placement="bottom"><strong> 服务器 8 </strong> <br> 负载：{{description_list[Math.floor(value_8/25)]}} <br> 正在监听：{{this.room_id_list_8}} <br> log：{{this.event_log_8}}</b-tooltip>
+        <b-tooltip target="overhead1" triggers="hover" placement="bottom">
+            <strong> 服务器 1 </strong> <br>
+            负载：{{description_list[Math.floor(value_1/25)]}}
+            <br> <strong>正在监听</strong>：<div v-for="value in this.room_id_list_1" :key="value"> {{value}} <br> </div>
+            <strong> log </strong>：<div v-for="value in this.event_log_1" :key="value"> {{value}} <br> </div>
+        </b-tooltip>
+
+        <b-tooltip target="overhead2" triggers="hover" placement="bottom">
+            <strong> 服务器 2 </strong> <br>
+            负载：{{description_list[Math.floor(value_2/25)]}}
+            <br> <strong>正在监听</strong>：<div v-for="value in this.room_id_list_2" :key="value"> {{value}} <br> </div>
+            <strong> log </strong>：<div v-for="value in this.event_log_2" :key="value"> {{value}} <br> </div>
+        </b-tooltip>
+
+        <b-tooltip target="overhead3" triggers="hover" placement="bottom">
+            <strong> 服务器 3 </strong> <br>
+            负载：{{description_list[Math.floor(value_3/25)]}}
+            <br> <strong>正在监听</strong>：<div v-for="value in this.room_id_list_3" :key="value"> {{value}} <br> </div>
+            <strong> log </strong>：<div v-for="value in this.event_log_3" :key="value"> {{value}} <br> </div>
+        </b-tooltip>
+
+        <b-tooltip target="overhead4" triggers="hover" placement="bottom">
+            <strong> 服务器 4 </strong> <br>
+            负载：{{description_list[Math.floor(value_4/25)]}}
+            <br> <strong>正在监听</strong>：<div v-for="value in this.room_id_list_4" :key="value"> {{value}} <br> </div>
+            <strong> log </strong>：<div v-for="value in this.event_log_4" :key="value"> {{value}} <br> </div>
+        </b-tooltip>
+
+        <b-tooltip target="overhead5" triggers="hover" placement="bottom">
+            <strong> 服务器 5 </strong> <br>
+            负载：{{description_list[Math.floor(value_5/25)]}}
+            <br> <strong>正在监听</strong>：<div v-for="value in this.room_id_list_5" :key="value"> {{value}} <br> </div>
+            <strong> log </strong>：<div v-for="value in this.event_log_5" :key="value"> {{value}} <br> </div>
+        </b-tooltip>
+
+        <b-tooltip target="overhead6" triggers="hover" placement="bottom">
+            <strong> 服务器 6 </strong> <br>
+            负载：{{description_list[Math.floor(value_6/25)]}}
+            <br> <strong>正在监听</strong>：<div v-for="value in this.room_id_list_6" :key="value"> {{value}} <br> </div>
+            <strong> log </strong>：<div v-for="value in this.event_log_6" :key="value"> {{value}} <br> </div>
+        </b-tooltip>
+
+        <b-tooltip target="overhead7" triggers="hover" placement="bottom">
+            <strong> 服务器 7 </strong> <br>
+            负载：{{description_list[Math.floor(value_7/25)]}}
+            <br> <strong>正在监听</strong>：<div v-for="value in this.room_id_list_7" :key="value"> {{value}} <br> </div>
+            <strong> log </strong>：<div v-for="value in this.event_log_7" :key="value"> {{value}} <br> </div>
+        </b-tooltip>
+
+        <b-tooltip target="overhead8" triggers="hover" placement="bottom">
+            <strong> 服务器 8 </strong> <br>
+            负载：{{description_list[Math.floor(value_8/25)]}}
+            <br> <strong>正在监听</strong>：<div v-for="value in this.room_id_list_8" :key="value"> {{value}} <br> </div>
+            <strong> log </strong>：<div v-for="value in this.event_log_8" :key="value"> {{value}} <br> </div>
+        </b-tooltip>
     </b-container>
   </div>
 </template>

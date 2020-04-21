@@ -3,7 +3,7 @@ export default {
     data: [],
     stopped: true,
     timeout: null,
-    timeout_count: 3000
+    timeout_count: 60000
   }),
   methods: {
     async update() {
