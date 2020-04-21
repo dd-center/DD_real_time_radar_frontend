@@ -38,6 +38,16 @@ body {
       margin: 0.2rem 0;
     }
   }
+
+  .icon_val {
+    right: 18px;
+    top: 18px;
+    position: absolute;
+
+    .inner {
+        margin: 2px; // Or whatever you want your spacing to be
+    }
+  }
 }
 
 .padding_part {
@@ -68,24 +78,20 @@ body {
     border-bottom: 1px solid #ebeef5;
     box-sizing: border-box;
   }
+
+  .icon_val {
+    right: 18px;
+    top: 18px;
+    position: absolute;
+
+    .inner {
+        margin: 2px; // Or whatever you want your spacing to be
+    }
+  }
 }
 
 .echarts {
   width: 600px;
   max-width: 100%;
   margin: 0 auto;
-}
-
-.danmaku_count {
-  display: inline-block;
-  //align-items: center;
-  //max-width: 800px;
-  border: 1px solid #ebeef5;
-  border-radius: 6px;
-  overflow: hidden;
-  transition: 0.3s ease;
-  //margin: 2rem auto;
-  &:hover {
-    box-shadow: 1px 1px 12px 0 #0000001F;
-  }
 }

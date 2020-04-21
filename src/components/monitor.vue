@@ -1,7 +1,9 @@
 <template>
-  <div class="monitor_card">
+  <div class="card">
+    <b-icon-question-circle-fill class="icon_val" v-b-popover.hover.bottomright="info"></b-icon-question-circle-fill>
     <h2 class="title">{{ title }}</h2>
     <chart ref="monitor" theme="light"  :options="options" :auto-resize="true" @click="onClick"></chart>
+  <b-tooltip target="monitor"  triggers="hover" placement="bottom"><strong> 这是什么？</strong> <br></b-tooltip>
   </div>
 </template>
 
@@ -11,12 +13,33 @@ import mixin from '../mixin'
 import 'echarts/lib/component/legend'; //引入图例组件
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/chart/pie';
+import { BIconQuestionCircleFill } from 'bootstrap-vue'
 let dataIndex = -1;
 let new_dataIndex = -1; // record the new position
 let delay_time = 1000; // specific delay
 export default {
   mixins: [mixin],
-
+  components: {
+    BIconQuestionCircleFill
+  },
+  computed: {
+        info(){
+          // Both title and content specified as a function in this example
+        // and will be called the each time the popover is opened
+        return {
+          html: true,
+          title: () => {
+            // Note this is called only when the popover is opened
+            return '这是什么？'
+          },
+          content: () => {
+            // Note this is called only when the popover is opened
+            // return 'The date is:<br><em>' + new Date() + '</em>'
+              return '<span>'+'1.正在同传的人会实时显示在雷达上。<br>'+'2.点击雷达图中心以前往对应直播间。<br>'+'3.点击雷达图外围以前往同传man的个人页面'+'</span>'
+              }
+            }
+          }
+    },
   data: () => ({
     title: '同传 man 雷达',
     options: {},
@@ -102,7 +125,8 @@ export default {
         else{
           // outer
           // console.log(this.data.user_id_mapping[event.name])
-          window.open(`https://space.bilibili.com/${this.data.user_id_mapping[event.name]}`);
+          // window.open(`https://space.bilibili.com/${this.data.user_id_mapping[event.name]}`);
+          window.open(`https://huolonglive.com/#/${this.data.user_id_mapping[event.name]}`);
         }
       },
     highlight() {
