@@ -4,60 +4,53 @@
     <b-container class="padding_for_server_info">
           <b-row>
             <b-col id="overhead1">
-                <b-progress v-model="value_1" :variant="find_suitable_color(value_1)" striped :animated="true">
-                    <b-progress-bar :value="value_1[0]">
-                        <strong> {{this.danmaku_counter_1}} </strong>
-                    </b-progress-bar>
+                <strong>服务器 1</strong>
+                <b-progress v-model="value_1" :value="value_1" :variant="find_suitable_color(value_1)" striped :animated="true">
                 </b-progress>
+                <strong></strong>
+                <div>监听弹幕<br>{{this.danmaku_counter_1}}</div>
             </b-col>
             <b-col id="overhead2">
+                <strong>服务器 2</strong>
                 <b-progress v-model="value_2" :value=value_2 :variant="find_suitable_color(value_2)" striped :animated="true">
-                    <b-progress-bar :value="value_2">
-                        <strong> {{this.danmaku_counter_2}} </strong>
-                    </b-progress-bar>
                 </b-progress>
+                <div>监听弹幕<br>{{this.danmaku_counter_2}}</div>
             </b-col>
             <b-col id="overhead3">
+                <strong>服务器 3</strong>
                 <b-progress v-model="value_3" :value=value_3 :variant="find_suitable_color(value_3)" striped :animated="true">
-                    <b-progress-bar :value="value_3">
-                        <strong> {{this.danmaku_counter_3}} </strong>
-                    </b-progress-bar>
                 </b-progress>
+                <div>监听弹幕<br>{{this.danmaku_counter_3}}</div>
             </b-col>
             <b-col id="overhead4">
+                <strong>服务器 4</strong>
                 <b-progress v-model="value_4" :value=value_4 :variant="find_suitable_color(value_4)" striped :animated="true">
-                    <b-progress-bar :value="value_4">
-                        <strong> {{this.danmaku_counter_4}} </strong>
-                    </b-progress-bar>
                 </b-progress>
+                <div>监听弹幕<br>{{this.danmaku_counter_4}}</div>
             </b-col>
             <b-col id="overhead5">
+                <strong>服务器 5</strong>
                 <b-progress v-model="value_5" :value=value_5 :variant="find_suitable_color(value_5)" striped :animated="true">
-                    <b-progress-bar :value="value_5">
-                        <strong> {{this.danmaku_counter_5}} </strong>
-                    </b-progress-bar>
                 </b-progress>
+                <div>监听弹幕<br>{{this.danmaku_counter_5}}</div>
             </b-col>
             <b-col id="overhead6">
+                <strong>服务器 6</strong>
                 <b-progress v-model="value_6" :value=value_6 :variant="find_suitable_color(value_6)" striped :animated="true">
-                    <b-progress-bar :value="value_6">
-                        <strong> {{this.danmaku_counter_6}} </strong>
-                    </b-progress-bar>
                 </b-progress>
+                <div>监听弹幕<br>{{this.danmaku_counter_6}}</div>
             </b-col>
             <b-col id="overhead7">
+                <strong>服务器 7</strong>
                 <b-progress v-model="value_7" :value=value_7 :variant="find_suitable_color(value_7)" striped :animated="true">
-                    <b-progress-bar :value="value_7">
-                        <strong> {{this.danmaku_counter_7}} </strong>
-                    </b-progress-bar>
                 </b-progress>
+                <div>监听弹幕<br>{{this.danmaku_counter_7}}</div>
             </b-col>
             <b-col id="overhead8">
+                <strong>服务器 8</strong>
                 <b-progress v-model="value_8" :value=value_8 :variant="find_suitable_color(value_8)" striped :animated="true">
-                    <b-progress-bar :value="value_8">
-                        <strong> {{this.danmaku_counter_8}} </strong>
-                    </b-progress-bar>
                 </b-progress>
+                <div>监听弹幕<br>{{this.danmaku_counter_8}}</div>
             </b-col>
           </b-row>
         <b-tooltip target="overhead1" triggers="hover" placement="bottom"><strong> 服务器 1 </strong> <br> 负载：{{description_list[Math.floor(value_1/25)]}} <br> 监听弹幕数：{{this.danmaku_counter_1}}</b-tooltip>
@@ -77,7 +70,7 @@
   export default {
     mixins: [mixin],
     data: () => ({
-      value_1: [0],
+      value_1: 0,
       value_2: 0,
       value_3: 0,
       value_4: 0,
@@ -101,7 +94,7 @@
     },
     watch: {
     data(value) {
-      this.value_1[0] = 100 * (value[0]['overhead']/17);
+      this.value_1 = 100 * (value[0]['overhead']/17);
       this.value_2 = 100 * (value[1]['overhead']/17);
       this.value_3 = 100 * (value[2]['overhead']/17);
       this.value_4 = 100 * (value[3]['overhead']/17);
