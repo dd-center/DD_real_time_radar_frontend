@@ -126,7 +126,7 @@
                   + '后端：一代鬃狮, scPointer<br>'
                   + '部署：一代鬃狮，无敌飞雪<br>'
                   + '网页安全：无敌飞雪<br>'
-                  + '弹幕监听：Kinori, Simon<br>'
+                  + '弹幕监听：Simon, Kinori<br>'
                   + '前端技术顾问：shugen, H4M5TER<br>'
                   + '美术设计：殿子, 一代鬃狮' + '</span><br>'
                   + '<span  style="color:red">' + '* 特别感谢无敌飞雪提供的域名' + '</span>'

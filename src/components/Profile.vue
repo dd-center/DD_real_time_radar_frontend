@@ -21,7 +21,7 @@
       <p type="tag info">当前状态：{{ data.is_working }}</p>
       <p type="tag info">个人空间：<a target="_blank" :href="space">{{ space }}</a></p>
       <p type="tag info">签名：{{ data.sign }}</p>
-      <img class="avatar" width="128" height="128" :src="data.face"/>
+      <img class="avatar" width="96" height="96" :src="data.face"/>
     </div>
   </div>
 </template>
