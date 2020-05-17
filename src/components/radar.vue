@@ -48,11 +48,17 @@ export default {
     hints () {
       const ability_value = [];
       this.data.indicator.forEach((data_value) => {
-        ability_value.push(data_value.name.charAt(data_value.name.length-1))
+        let target_value = data_value.name.charAt(data_value.name.length-1);
+        if (target_value === 'X'){
+          ability_value.push('EX')
+        }
+        else{
+          ability_value.push(target_value)
+        }
       });
       return [
         '破坏力 ' + ability_value[0] + ': ' +story[0][ability_value[0]],
-        '持续力 E' + ability_value[1] + ': ' + '最长高强度连续同传了 ' + this.data.others.primary_value[1] + ' 小时，这发生在 ' + this.data.others.longest_date + ' 的 ' + this.data.others.longest_room,
+        '持续力 ' + ability_value[1] + ': ' + '最长高强度连续同传了 ' + this.data.others.primary_value[1] + ' 小时，这发生在 ' + this.data.others.longest_date + ' 的 ' + this.data.others.longest_room,
         '字长' + ability_value[2] +': ' + '同传弹幕的平均长度是 ' + this.data.others.primary_value[2],
         '射程 ' + ability_value[3] +': ' + '你的DD指数是 ' + this.data.others.primary_value[3] + ' 它基本相当于你贡献了不少同传的房间数',
         '肝 ' + ability_value[4] +': ' + '你的反摸鱼指数 ' + this.data.others.primary_value[4] + ' 与摸鱼的天数负相关',
