@@ -38,7 +38,7 @@
         </p>
         <p class="value">同传总字数：{{ user.value }}</p>
         <p v-if="user.uid === 4515283" class="desc">
-          不灭黑焰第三队第IX任现任队长BLACK SIDE
+          我的所有情感与冲动都是为了破灭而铺垫存在的。
         </p>
         <p v-else class="desc">{{ user.sign }}</p>
       </div>

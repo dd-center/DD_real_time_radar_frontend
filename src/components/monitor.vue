@@ -41,7 +41,7 @@ export default {
           }
     },
   data: () => ({
-    title: '同传 man 雷达',
+    title: '抢 活 雷 达',
     options: {},
     stopped: false,
     timeout: null,
