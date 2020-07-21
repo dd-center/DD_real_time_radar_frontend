@@ -46,6 +46,7 @@
 '<td>徽章</td>' +
 '<td>名称</td>' +
 '<td>条件</td>' +
+
 '</tr>' +
 '<tr>' +
 '<td><img src="/pink.png"></td>' +
@@ -67,6 +68,11 @@
 '<td><img src="/golden.png"></td>' +
 '<td>金火龙</td>' +
 '<td>同传总字数 1000000+</td>' +
+'</tr>' +
+'<tr>' +
+'<td><img width="32" height="32" src="/sponsor2.png"></td>' +
+'<td>赞 助</td>' +
+'<td>赞助了本网站的服务器 </td>' +
 '</table>' + '</span>'
                     }
                 }
