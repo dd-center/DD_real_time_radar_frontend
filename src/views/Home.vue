@@ -49,23 +49,23 @@
 
 '</tr>' +
 '<tr>' +
-'<td><img src="/pink.png"></td>' +
+'<td><img width="32" height="32" src="/pink.png"></td>' +
 '<td>樱火龙</td>' +
 '<td>同传总字数 1000+</td>' +
 '</tr>' +
       '</tr>' +
 '<tr>' +
-'<td><img src="/black_red.png"></td>' +
+'<td><img width="32" height="32" src="/black_red.png"></td>' +
 '<td>黑火龙</td>' +
 '<td>同传总字数 10000+</td>' +
       '</tr>' +
 '<tr>' +
-'<td><img src="/sliver.png"></td>' +
+'<td><img width="32" height="32" src="/yin.ico"></td>' +
 '<td>银火龙</td>' +
 '<td>同传总字数 100000+</td>' +
                       '</tr>' +
 '<tr>' +
-'<td><img src="/golden.png"></td>' +
+'<td><img width="32" height="32" src="/jin.ico"></td>' +
 '<td>金火龙</td>' +
 '<td>同传总字数 1000000+</td>' +
 '</tr>' +
@@ -84,13 +84,13 @@
           html: true,
           title: () => {
             // Note this is called only when the popover is opened
-            return '☁ 网页说明'
+            return '⚠️ 特别说明'
           },
           content: () => {
             // Note this is called only when the popover is opened
             // return 'The date is:<br><em>' + new Date() + '</em>'
               return '<span  style="color:goldenrod">' +
-              // '<span  style="color:red">' + '0.2月下旬和3月的数据更新，数据可能暂时不稳定' +  '</span>' + '<br>' +
+              '<span  style="color:red">' + '0. 从即日起已经停止对 桐生可可Official 和 hololive 直播间的弹幕监听支持，望知悉' +  '</span>' + '<br>' +
               '1. 括号不计入同传总字数<br>' + '2. 单击头像以进入个人页面<br>' + '3. 雷达可以探测正在工作的同传man<br>' + '4.数据从19年5月开始计入，6/7月有数据缺失，8月后基本完整, 正在实时更新' + '</span>'
                     }
                 }

@@ -10,23 +10,23 @@
           <b-container>
           <b-row class="row no-gutters">
             <b-col class="inner">
-                <p v-if="[23072573, 15786749, 2025122, 1435101, 2907459, 3992958, 9572567, 1294271, 13967, 1398630, 12892870, 27212086].includes(user.uid)">
+                <p v-if="[23072573, 15786749, 2025122, 1435101, 2907459, 3992958, 9572567, 1294271, 13967, 1398630, 12892870, 27212086, 12283738, 2327813, 24936979].includes(user.uid)">
                     <img width="32" height="32" src="/sponsor2.png">
                 </p>
             </b-col>
 
             <b-col class="inner">
                 <div v-if="user.value >= 1000000">
-                  <img src="/golden.png">
+                  <img width="32" height="32" src="/jin.ico">
                   </div>
                   <div v-else-if="user.value >= 100000">
-                      <img src="/sliver.png">
+                      <img width="32" height="32" src="/yin.ico">
                   </div>
                   <div v-else-if="user.value >= 10000">
-                      <img src="/black_red.png">
+                      <img width="32" height="32" src="/black_red.png">
                   </div>
                   <div v-else-if="user.value >= 1000">
-                      <img src="/pink.png">
+                      <img width="32" height="32" src="/pink.png">
               </div>
             </b-col>
 <!--            <b-col class="inner"><img src="/black_red.png" id="tooltip-button-variant3"></b-col>-->
