@@ -2,12 +2,12 @@
     <div class="container">
         <b-row  class="justify-content-md-center">
             <b-col lg="2"><b-button pill variant="danger" v-b-popover.hover.bottomleft="badge">火龙徽章</b-button></b-col>
-            <b-col lg="2"><b-button pill variant="warning" v-b-popover.hover.bottom="Rules">排行规则</b-button></b-col>
+            <b-col lg="2"><b-button pill variant="warning" v-b-popover.hover.bottom="Rules">特别说明</b-button></b-col>
             <b-col lg="2"><b-button pill variant="dark" v-b-popover.hover.bottom="contribute">参与人员</b-button></b-col>
             <b-col lg="2"><b-button pill variant="primary" v-b-popover.hover.bottomright="repo">Github</b-button></b-col>
         </b-row>
         <div class="level">
-<!--            <progress-chart/>-->
+            <progress-chart/>
             <monitor-chart/>
             <danmaku-rating/>
         </div>
@@ -17,13 +17,13 @@
 <script>
     import 'bootstrap/dist/css/bootstrap.css'
     import 'bootstrap-vue/dist/bootstrap-vue.css'
-    // const ProgressChart = () => import("../components/progress_bar");
+    const ProgressChart = () => import("../components/progress_bar");
     const DanmakuRating = () => import("../components/DanmakuRating")
     const MonitorChart = () => import("../components/monitor");
     export default {
         name: 'DataView',
         components: {
-            // ProgressChart,
+            ProgressChart,
             DanmakuRating,
             MonitorChart,
         },
@@ -90,7 +90,7 @@
             // Note this is called only when the popover is opened
             // return 'The date is:<br><em>' + new Date() + '</em>'
               return '<span  style="color:goldenrod">' +
-              '<span  style="color:red">' + '0. 从即日起已经停止对 桐生可可Official 和 hololive 直播间的弹幕监听支持，望知悉' +  '</span>' + '<br>' +
+              '<span  style="color:red">' + '0. 从即日起已经停止对 桐生可可Official 和 hololive 直播间的弹幕监听支持' +  '</span>' + '<br>' +
               '1. 括号不计入同传总字数<br>' + '2. 单击头像以进入个人页面<br>' + '3. 雷达可以探测正在工作的同传man<br>' + '4.数据从19年5月开始计入，6/7月有数据缺失，8月后基本完整, 正在实时更新' + '</span>'
                     }
                 }

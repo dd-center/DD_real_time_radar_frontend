@@ -42,9 +42,9 @@
           <span class="name">{{ user.name }}</span>&nbsp;
         </p>
         <p class="value">同传总字数：{{ user.value }}</p>
-<!--        <p v-if="user.uid === 4515283" class="desc">-->
-<!--          我的所有情感与冲动都是为了破灭而铺垫存在的。-->
-<!--        </p>-->
+        <p v-if="user.uid === 1395983" class="desc">
+          一代鬃狮：数据获取错误，你仅仅只得到了一只狮子。
+        </p>
         <p v-if="user.uid === 16878539" class="desc">
           巨乳的大姐姐来狩猎你 💗 了 💗 哦 💗 ～ (towa单推，基本只干自己喜欢的事。（烤肉，同传之类的）
         </p>
