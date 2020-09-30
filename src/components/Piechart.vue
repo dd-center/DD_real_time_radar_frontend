@@ -64,9 +64,17 @@ export default {
     onClick(event) {
         // console.log(event);
         // console.log(this.data);
-        let room_id = this.data.roomid_list[event.dataIndex].roomid;
-        // console.log(room_id);
-        window.open(`https://live.bilibili.com/${room_id}`, "_blank");
+        let target_name = event.data.name
+        let room_list = this.data.roomid_list
+      // find room id using the target name from this.data.roomid_list
+        for (let i = 0; i < room_list.length; i++) {
+          let current = room_list[i]
+          if (current.name === target_name){
+            console.log(current.roomid);
+            window.open(`https://live.bilibili.com/${current.roomid}`, "_blank");
+            break;
+          }
+        }
       },
     highlight() {
       try {
