@@ -200,7 +200,7 @@
     },
     watch: {
     data(value) {
-      console.log(value)
+      // console.log(value)
       this.value_1 = 100 * (value[0]['overhead']/64);
       this.value_2 = 100 * (value[1]['overhead']/64);
       this.value_3 = 100 * (value[2]['overhead']/64);
