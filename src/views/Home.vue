@@ -91,7 +91,8 @@
             // return 'The date is:<br><em>' + new Date() + '</em>'
               return '<span  style="color:goldenrod">' +
               '<span  style="color:red">' + '0. 从即日起已经停止对 桐生可可Official 和 hololive 直播间的弹幕监听支持' +  '</span>' + '<br>' +
-              '1. 括号不计入同传总字数<br>' + '2. 单击头像以进入个人页面<br>' + '3. 雷达可以探测正在工作的同传man<br>' + '4.数据从19年5月开始计入，6/7月有数据缺失，8月后基本完整, 正在实时更新' + '</span>'
+                  '<span  style="color:mediumpurple">' + '1. 网站近期维护中，期间可能出现弹幕丢失的问题，还请谅解' +  '</span>' + '<br>' +
+              '2. 括号不计入同传总字数<br>' + '3. 单击头像以进入个人页面<br>' + '4. 雷达可以探测正在工作的同传man<br>' + '5.数据从19年5月开始计入，6/7月有数据缺失，8月后基本完整, 正在实时更新' + '</span>'
                     }
                 }
             },
