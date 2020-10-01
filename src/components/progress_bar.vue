@@ -11,19 +11,19 @@
             </b-col>
 
             <b-col id="overhead1">
-                <b-progress v-model="value_1" :value="value_1" :variant="find_suitable_color(value_1)" striped :animated="true">
+                <b-progress v-model="value_1" :value="value_1" :variant="find_suitable_color(value_1)" striped :animated="server_connected_1">
                 </b-progress>
             </b-col>
             <b-col id="overhead2">
-                <b-progress v-model="value_2" :value=value_2 :variant="find_suitable_color(value_2)" striped :animated="true">
+                <b-progress v-model="value_2" :value=value_2 :variant="find_suitable_color(value_2)" striped :animated="server_connected_2">
                 </b-progress>
             </b-col>
             <b-col id="overhead3">
-                <b-progress v-model="value_3" :value=value_3 :variant="find_suitable_color(value_3)" striped :animated="true">
+                <b-progress v-model="value_3" :value=value_3 :variant="find_suitable_color(value_3)" striped :animated="server_connected_3">
                 </b-progress>
             </b-col>
             <b-col id="overhead4">
-                <b-progress v-model="value_4" :value=value_4 :variant="find_suitable_color(value_4)" striped :animated="true">
+                <b-progress v-model="value_4" :value=value_4 :variant="find_suitable_color(value_4)" striped :animated="server_connected_4">
                 </b-progress>
             </b-col>
 <!--            <b-col id="overhead5">-->
@@ -193,6 +193,11 @@
       // event_log_6: [],
       // event_log_7: [],
       // event_log_8: [],
+      server_connected_1: false,
+      server_connected_2: false,
+      server_connected_3: false,
+      server_connected_4: false,
+
     }),
     created() {
       this.stopped = false
@@ -236,6 +241,10 @@
       // this.event_log_6 = value[5]['current_event'];
       // this.event_log_7 = value[6]['current_event'];
       // this.event_log_8 = value[7]['current_event'];
+      this.server_connected_1 = value[0]['server_status'];
+      this.server_connected_2 = value[1]['server_status'];
+      this.server_connected_3 = value[2]['server_status'];
+      this.server_connected_4 = value[3]['server_status'];
       },
     },
     methods: {
