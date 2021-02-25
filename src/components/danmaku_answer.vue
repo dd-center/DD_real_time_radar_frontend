@@ -31,7 +31,7 @@
         <template v-slot:table-busy>
         <div class="text-center text-dark my-2">
           <b-spinner class="align-middle"></b-spinner>
-          <strong> 加载中...</strong>
+          <strong> 首次访问请等待更长时间，加载中...</strong>
         </div>
       </template>
     </b-table>
