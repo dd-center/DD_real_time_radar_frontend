@@ -90,8 +90,8 @@
             // Note this is called only when the popover is opened
             // return 'The date is:<br><em>' + new Date() + '</em>'
               return '<span  style="color:goldenrod">' +
-              '<span  style="color:red">' + '0. 即日起已经停止对桐生可可和hololive的直播间监听' +  '</span>' + '<br>' +
-                  '<span  style="color:mediumpurple">' + '1. 由于经费紧张，目前采用了相对廉价的服务器，首次访问个人页面可能会等待更长时间，请耐心等候～' +  '</span>' + '<br>' +
+              '<span  style="color:red">' + '0. 由于经费紧张，目前采用了相对廉价的服务器，访问可能会等待更长时间，请耐心等候～' +  '</span>' + '<br>' +
+                  '<span  style="color:mediumpurple">' + '1. 任何问题请前往github的issue页面反映' +  '</span>' + '<br>' +
               '2. 括号不计入同传总字数<br>' + '3. 单击头像以进入个人页面<br>' + '4. 雷达可以探测正在工作的同传man<br>' + '5.数据从19年5月开始计入，6/7月有数据缺失，8月后基本完整, 正在实时更新' + '</span>'
                     }
                 }
