@@ -31,7 +31,7 @@
         <template v-slot:table-busy>
         <div class="text-center text-dark my-2">
           <b-spinner class="align-middle"></b-spinner>
-          <strong> 贫穷服务器加载中...</strong>
+          <strong> 加载中...</strong>
         </div>
       </template>
     </b-table>

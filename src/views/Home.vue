@@ -90,9 +90,9 @@
             // Note this is called only when the popover is opened
             // return 'The date is:<br><em>' + new Date() + '</em>'
               return '<span  style="color:goldenrod">' +
-              '<span  style="color:red">' + '0. 由于经费紧张，目前采用了相对廉价的服务器，访问可能会等待更长时间，请耐心等候～' +  '</span>' + '<br>' +
-                  '<span  style="color:mediumpurple">' + '1. 任何问题请前往github的issue页面反映' +  '</span>' + '<br>' +
-              '2. 括号不计入同传总字数<br>' + '3. 单击头像以进入个人页面<br>' + '4. 雷达可以探测正在工作的同传man<br>' + '5.数据从19年5月开始计入，6/7月有数据缺失，8月后基本完整, 正在实时更新' + '</span>'
+                '<span  style="color:red">' + '0. 近期排名变动是因为去除了错误收集的重复弹幕，望知悉～' +  '</span>' + '<br>' +
+                  '<span  style="color:goldenrod">' + '1. 短时间发送重复的同传弹幕不被计算在内' +  '</span>' + '<br>' +
+              '2. 括号不计入同传总字数<br>' + '3. 颜文字不算同传！<br>' + '4. 单击头像以进入个人页面<br>' + '5. 雷达可以探测正在工作的同传man<br>' + '6.数据从19年5月开始计入，19年6/7月有数据缺失，19年8月后基本完整, 正在实时更新' + '</span>'
                     }
                 }
             },
@@ -126,17 +126,17 @@
           content: () => {
             // Note this is called only when the popover is opened
             // return 'The date is:<br><em>' + new Date() + '</em>'
-              return '<span  style="color:mediumpurple">' +
+              return  '<span  style="color:red">' + '* 本网站服务器由Ajika全额资助，域名由无敌飞雪提供，在这里特别感谢他们，谢谢！' + '</span><br>' +
+                  '<span  style="color:mediumpurple">' +
                   '网页架构：FZxiao, il Harper<br>'
                   + '数据处理：scPointer<br>'
                   + '前端：孤梦星影，一代鬃狮<br>'
                   + '后端：一代鬃狮, scPointer<br>'
-                  + '部署：一代鬃狮，无敌飞雪<br>'
+                  + '部署：无敌飞雪，一代鬃狮<br>'
                   + '网页安全：无敌飞雪<br>'
                   + '弹幕监听：Simon, Kinori<br>'
                   + '前端技术顾问：shugen, H4M5TER<br>'
-                  + '美术设计：殿子, 一代鬃狮' + '</span><br>'
-                  + '<span  style="color:red">' + '* 特别感谢无敌飞雪提供的域名' + '</span>'
+                  + '美术设计：殿子, 一代鬃狮' + '</span>'
               }
             }
           }
