@@ -2,7 +2,7 @@
 	<div id="rating">
 		<meta name="referrer" content="no-referrer">
     <p v-if="!data">正在获取排名数据……</p>
-    <div class="item" v-else v-for="(user, index) in data" :key="user.name">
+    <div class="item" v-else v-for="(user, index) in data.slice(1, list_length)" :key="user.name">
       <router-link class="avatar" :to="'/' + user.uid">
         <img width="128" height="128" :src="user.face" alt="头像"/>
       </router-link>
@@ -57,6 +57,7 @@
 <script>
 
 import mixin from '../mixin'
+import huolonglive_server from './server_location.js'
 
 const colors = [
   'goldenrod',
@@ -69,11 +70,33 @@ export default {
 
   data: () => ({
     colors,
+    list_length: 25
   }),
 
   created() {
-    this.url = `https://api.huolonglive.com/processjson?uid=000000&chart_type=ladder`
+    this.url = `${huolonglive_server.address}/processjson?uid=000000&chart_type=ladder`
   },
+  methods: {
+    // ...
+    scroll() {
+      let isLoading = false
+      window.onscroll = () => {
+        // 距离底部200px时加载一次
+        let bottomOfWindow = document.documentElement.offsetHeight - document.documentElement.scrollTop - window.innerHeight <= 200
+        if (bottomOfWindow && isLoading === false) {
+          isLoading = true
+          this.list_length += 25
+          setTimeout(() => {
+              isLoading = false
+          }, 2000);
+          console.log("hello~")
+        }
+      }
+    }
+  },
+  mounted() {
+    this.scroll()
+  }
 }
 
 </script>

@@ -11,6 +11,7 @@ import mixin from '../mixin'
 import 'echarts/lib/component/legend'; //引入图例组件
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/chart/pie';
+import huolonglive_server from "@/components/server_location";
 let dataIndex = -1;
 let new_dataIndex = -1; // record the new position
 let delay_time = 1000; // specific delay
@@ -26,7 +27,7 @@ export default {
 
   created() {
     this.once = true
-    this.url = `https://api.huolonglive.com/processjson?uid=${this.$route.params.uid}&chart_type=pie`
+    this.url = `${huolonglive_server.address}/processjson?uid=${this.$route.params.uid}&chart_type=pie`
   },
 
   watch: {

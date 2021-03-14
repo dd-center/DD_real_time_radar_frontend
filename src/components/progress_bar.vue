@@ -134,6 +134,8 @@
 <script>
   import mixin from '../mixin'
   import { BIconQuestionCircleFill } from 'bootstrap-vue'
+  import huolonglive_server from "@/components/server_location";
+
   export default {
     mixins: [mixin],
     components: {
@@ -201,7 +203,7 @@
     }),
     created() {
       this.stopped = false
-      this.url = `https://api.huolonglive.com/processjson?uid=000000&chart_type=server`;
+      this.url = `${huolonglive_server.address}/processjson?uid=000000&chart_type=server`;
     },
     watch: {
     data(value) {

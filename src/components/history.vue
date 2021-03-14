@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import huolonglive_server from './server_location.js'
 
 export default {
   data: () => ({
@@ -13,7 +14,7 @@ export default {
 
   created() {
     this.once = true
-    this.url = `https://api.huolonglive.com/processjson?uid=${this.$route.params.uid}&chart_type=message`
+    this.url = `${huolonglive_server.address}/processjson?uid=${this.$route.params.uid}&chart_type=message`
   },
 
   watch: {

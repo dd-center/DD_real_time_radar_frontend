@@ -14,7 +14,7 @@ import mixin from '../mixin'
 import 'echarts/lib/component/legend'; //引入图例组件
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/chart/radar';
-
+import huolonglive_server from "@/components/server_location";
 // write story comments~
 const story = [
         // 弹幕数： 破坏力
@@ -41,13 +41,14 @@ export default {
 
   created() {
     // this.once = true
-    this.url = `https://api.huolonglive.com/processjson?uid=${this.$route.params.uid}&chart_type=radar`
+    this.url = `${huolonglive_server.address}/processjson?uid=${this.$route.params.uid}&chart_type=radar`
   },
 
   computed: {
     hints () {
       const ability_value = [];
-      this.data.indicator.forEach((data_value) => {
+      if (this.data.indicator){
+        this.data.indicator.forEach((data_value) => {
         let target_value = data_value.name.charAt(data_value.name.length-1);
         if (target_value === 'X'){
           ability_value.push('EX')
@@ -55,14 +56,23 @@ export default {
         else{
           ability_value.push(target_value)
         }
-      });
-      return [
+        });
+        return [
         '破坏力 ' + ability_value[0] + ': ' +story[0][ability_value[0]],
         '持续力 ' + ability_value[1] + ': ' + '最长高强度连续同传了 ' + this.data.others.primary_value[1] + ' 小时，这发生在 ' + this.data.others.longest_date + ' 的 ' + this.data.others.longest_room,
-        '字长' + ability_value[2] +': ' + '同传弹幕的平均长度是 ' + this.data.others.primary_value[2],
+        '字长 ' + ability_value[2] +': ' + '同传弹幕的平均长度是 ' + this.data.others.primary_value[2],
         '射程 ' + ability_value[3] +': ' + '你的DD指数是 ' + this.data.others.primary_value[3] + ' 它基本相当于你贡献了不少同传的房间数',
         '肝 ' + ability_value[4] +': ' + '你的反摸鱼指数 ' + this.data.others.primary_value[4] + ' 与摸鱼的天数负相关',
         '攻速 ' + ability_value[5] +': ' + '你在高强度同传时平均每分钟敲出 '+ this.data.others.primary_value[5] +' 个字',
+        ]
+      }
+      return [
+        '破坏力 ?' + ': ?',
+        '持续力 ?' + ': ' + '最长高强度连续同传了 ?' + ' 小时，这发生在 ?' + ' 的 ?',
+        '字长 ?' + ': ' + '同传弹幕的平均长度是 ?',
+        '射程 ?' + ': ' + '你的DD指数是 ?' + ' 它基本相当于你贡献了不少同传的房间数',
+        '肝 ?' + ': ' + '你的反摸鱼指数 ?' + ' 与摸鱼的天数负相关',
+        '攻速 ?' + ': ' + '你在高强度同传时平均每分钟敲出 ?'+ ' 个字',
       ]
     },
   },

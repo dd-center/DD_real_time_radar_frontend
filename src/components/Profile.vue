@@ -29,7 +29,7 @@
 <script>
 
 import mixin from '../mixin'
-
+import huolonglive_server from "@/components/server_location";
 export default {
   mixins: [mixin],
 
@@ -40,7 +40,7 @@ export default {
   },
 
   created() {
-    this.url = `https://api.huolonglive.com/processjson?uid=${this.$route.params.uid}&chart_type=man_status`;
+    this.url = `${huolonglive_server.address}/processjson?uid=${this.$route.params.uid}&chart_type=man_status`;
   },
 }
 

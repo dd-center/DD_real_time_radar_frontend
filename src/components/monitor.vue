@@ -8,18 +8,20 @@
 </template>
 
 <script>
-
 import mixin from '../mixin'
 import 'echarts/lib/component/legend'; //引入图例组件
 import 'echarts/lib/component/tooltip';
 import 'echarts/lib/chart/pie';
 import { BIconQuestionCircleFill } from 'bootstrap-vue'
+import huolonglive_server from "@/components/server_location";
+
 let dataIndex = -1;
 let new_dataIndex = -1; // record the new position
 let delay_time = 1000; // specific delay
 export default {
   mixins: [mixin],
   components: {
+
     BIconQuestionCircleFill
   },
   computed: {
@@ -48,7 +50,7 @@ export default {
   }),
 
   created() {
-    this.url = `https://api.huolonglive.com/processjson?uid=000000&chart_type=monitor`
+    this.url = `${huolonglive_server.address}/processjson?uid=000000&chart_type=monitor`
   },
 
   watch: {
@@ -126,7 +128,7 @@ export default {
           // outer
           // console.log(this.data.user_id_mapping[event.name])
           // window.open(`https://space.bilibili.com/${this.data.user_id_mapping[event.name]}`);
-          window.open(`https://huolonglive.com/${this.data.user_id_mapping[event.name]}`);
+          window.open(`${huolonglive_server.address}/${this.data.user_id_mapping[event.name]}`);
         }
       },
     highlight() {

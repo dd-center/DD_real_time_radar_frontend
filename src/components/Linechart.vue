@@ -17,7 +17,7 @@ import 'echarts/lib/component/tooltip'
 import 'echarts/lib/chart/bar'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-
+import huolonglive_server from './server_location.js'
 // let index = 0
 
 export default {
@@ -33,7 +33,7 @@ export default {
 
   created() {
     this.once = true
-    this.url = `https://api.huolonglive.com/processjson?uid=${this.$route.params.uid}&chart_type=bar`
+    this.url = `${huolonglive_server.address}/processjson?uid=${this.$route.params.uid}&chart_type=bar`
   },
 
   watch: {
@@ -69,14 +69,17 @@ export default {
           tooltip: {
             trigger: 'axis',
             formatter(data) {
-              var colorSpan = color => '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' + color + '"></span>';
-              let rez = '<p>' + data[0].axisValue + '</p>';
-              data.forEach((data_value) => {
-                if (!data_value.value == "") {
-                  rez += '<p>'   + colorSpan(data_value.color) + ' ' + data_value.seriesName + ': ' + data_value.value + '</p>'
-                }
-              });
-              return rez
+              if (data){
+                var colorSpan = color => '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' + color + '"></span>';
+                let rez = '<p>' + data[0].axisValue + '</p>';
+                data.forEach((data_value) => {
+                  if (!data_value.value == "") {
+                    rez += '<p>'   + colorSpan(data_value.color) + ' ' + data_value.seriesName + ': ' + data_value.value + '</p>'
+                  }
+                });
+                return rez
+              }
+              return null
             }
           },
           series: this.value[key].data,
