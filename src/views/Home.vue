@@ -1,16 +1,43 @@
 <template>
     <div class="container">
         <b-row  class="justify-content-md-center">
-            <b-col lg="2"><b-button pill variant="danger" v-b-popover.hover.bottomleft="badge">火龙徽章</b-button></b-col>
+            <b-col lg="2"><b-button pill variant="danger" v-b-popover.hover.bottom="badge">火龙徽章</b-button></b-col>
             <b-col lg="2"><b-button pill variant="warning" v-b-popover.hover.bottom="Rules">特别说明</b-button></b-col>
             <b-col lg="2"><b-button pill variant="dark" v-b-popover.hover.bottom="contribute">参与人员</b-button></b-col>
             <b-col lg="2"><b-button pill variant="success" v-b-popover.hover.bottom="update_note">更新日志</b-button></b-col>
-            <b-col lg="2"><b-button pill variant="primary" v-b-popover.hover.bottomright="repo">Github</b-button></b-col>
+            <b-col lg="2"><b-button pill variant="info" v-b-popover.hover.bottom="search_man" v-b-modal.find_service>同传搜索</b-button></b-col>
+            <b-col lg="2"><b-button pill variant="primary" v-b-popover.hover.bottom="repo">Github</b-button></b-col>
         </b-row>
+        <b-modal ref="find_service"
+                                 id="find_service"
+                                 title="同传man定位"
+                                 hide-footer>
+            <b-form >
+            <b-form-group id="uid"
+                          :label="'我被同传网站记录了吗？'"
+                          label-for="uid-input">
+                <b-form-input id="uid-input"
+                              type="text"
+                              v-model="UID"
+                              required
+                              :placeholder="'请于此输入您的uid!'">
+                </b-form-input>
+              </b-form-group>
+            </b-form>
+<!--          <b-button-group>-->
+<!--                <b-button type="submit" class="custom_modal" @click="onSubmitUid">提交</b-button>-->
+<!--              </b-button-group>-->
+          <div class="register_pannel">
+              <b-button-group>
+                <b-button type="submit" class="custom_modal" @click="scroll_to_me">提交</b-button>
+              </b-button-group>
+              <div v-if="!is_valid_uid" style="color: red">非法输入或uid不存在</div>
+            </div>
+         </b-modal>
         <div class="level">
 <!--            <progress-chart/>-->
             <monitor-chart/>
-            <danmaku-rating/>
+            <danmaku-rating ref="form"/>
         </div>
     </div>
 </template>
@@ -23,11 +50,35 @@
     const MonitorChart = () => import("../components/monitor");
     export default {
         name: 'DataView',
+        data() {
+          return{
+            UID: '',
+            is_valid_uid: true
+          }
+        },
         components: {
             // ProgressChart,
             DanmakuRating,
             MonitorChart,
         },
+      methods:{
+          scroll_to_me(){
+            let target_mid = this.UID
+            // console.log(target_mid)
+            let is_exist = this.$refs.form.find_me(target_mid)
+            if (is_exist === true){
+              this.$refs.find_service.hide();
+              this.is_valid_uid = true
+              setTimeout(() => {
+              document.querySelector("#Demo_" + target_mid).scrollIntoView({ behavior: "smooth", block: "center"});
+              this.UID=''
+              }, 500);
+            } else {
+              this.is_valid_uid = false
+              console.log("Not exist!")
+            }
+          }
+      },
     computed: {
       badge(){
           // Both title and content specified as a function in this example
@@ -93,7 +144,7 @@
               return '<span  style="color:goldenrod">' +
                 '<span  style="color:red">' + '0. 近期排名变动是因为去除了错误收集的重复弹幕，望知悉～' +  '</span>' + '<br>' +
                   '<span  style="color:goldenrod">' + '1. 短时间发送重复的同传弹幕不被计算在内' +  '</span>' + '<br>' +
-              '2. 括号不计入同传总字数<br>' + '3. 颜文字不算同传！会被朴素贝叶斯分类器干掉的～<br>' + '4. 单击头像以进入个人页面<br>' + '5. 雷达可以探测正在工作的同传man<br>' + '6.数据从19年5月开始计入，19年6/7月有数据缺失，19年8月后基本完整, 21年3月前半月因服务器维护有数据缺失，目前正在实时更新' + '</span>'
+              '2. 括号不计入同传总字数<br>' + '3. 颜文字不算同传！会被朴素贝叶斯分类器干掉的～<br>' + '4. 单击头像以进入个人页面<br>' + '5. 雷达可以探测正在工作的同传man<br>' + '6. 移动端建议横屏浏览本网站，效果更佳<br>' + '7.数据从19年5月开始计入，19年6/7月有数据缺失，19年8月后基本完整, 21年3月前半月因服务器维护有数据缺失，目前正在实时更新' + '</span>'
                     }
                 }
             },
@@ -133,10 +184,25 @@
               '2. 优化内存利用与CPU利用，提高了网站的响应速度<br>' + '3. 于后台缓慢更新同传man的信息<br>' + '4. 前端程序可读性略微上升<br>' +
                   '<span  style="color:black">' + '<b>'+ '03/15/2021-版本 v1.02' +  '</b>' + '</span>' + '<br>' +
                   '<span  style="color:green">' + '1. 同传记录现在可以下载了！' +  '</span>' + '<br>' +
-              '2. 继续修复了一个会导致后端崩溃的bug<br>' + '</span>'
+              '2. 继续修复了一个会导致后端崩溃的bug<br>' + '3. 更改主页加载机制，大幅提升网页加载速度<br>' + '</span>'
               }
             }
           },
+        search_man(){
+          return {
+          html: true,
+          title: () => {
+            // Note this is called only when the popover is opened
+            return '🔍 同传搜索'
+          },
+          content: () => {
+            // Note this is called only when the popover is opened
+            // return 'The date is:<br><em>' + new Date() + '</em>'
+              return '<span  style="color:cadetblue">' +
+                '输入您的' + '<b>'+ 'uid' + '</b>' +'以查询您是否被本网站记录' + '</span>'
+              }
+            }
+        },
          contribute(){
           // Both title and content specified as a function in this example
         // and will be called the each time the popover is opened
@@ -167,3 +233,11 @@
         }
     }
 </script>
+<style lang="scss" scoped>
+.register_pannel {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+  }
+</style>

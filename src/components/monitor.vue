@@ -128,7 +128,7 @@ export default {
           // outer
           // console.log(this.data.user_id_mapping[event.name])
           // window.open(`https://space.bilibili.com/${this.data.user_id_mapping[event.name]}`);
-          window.open(`${huolonglive_server.address}/${this.data.user_id_mapping[event.name]}`);
+          window.open(`https://huolonglive.com/${this.data.user_id_mapping[event.name]}`);
         }
       },
     highlight() {

@@ -7,5 +7,3 @@ mv dist html
 
 #scp -r html/ feixue@20.48.1.127:/home/feixue/folder
 scp -r html/ feixue@20.48.1.127:/var/www
-
-# TempPassword114
